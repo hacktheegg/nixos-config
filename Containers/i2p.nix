@@ -5,7 +5,7 @@
     autoStart = true;
       config = { ... }: {
 
-      networking.firewall.allowTCPPorts = [
+      networking.firewall.allowedTCPPorts = [
         7656 # SAM
         7070 # Webconsole
         4447 # SOCKS proxy
