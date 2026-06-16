@@ -47,6 +47,8 @@
     kdePackages.kirigami
     libsForQt5.qt5ct
 
+    kdePackages.konsole
+
 #     libsForQt5.breeze-qt5
 
     libsForQt5.qtstyleplugin-kvantum
