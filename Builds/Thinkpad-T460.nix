@@ -22,7 +22,7 @@ in
 {
   imports =
     [
-      ./../hardware-configuration.nix
+      ./../Hardware/Thinkpad-T460.nix
       <home-manager/nixos>
 
       ./../Containers/i2p.nix

@@ -1,7 +1,9 @@
-gnore the cleartext secrets file used for editing
+#Ignore the cleartext secrets file used for editing
 Secrets/*.txt
 # Keep the encrypted age files
 !Secrets/*.age
 !Secrets/secrets.nix
 # Ignore result symlinks from nix builds
 result
+# Ignore the file that identifies the device
+Configs/hostname

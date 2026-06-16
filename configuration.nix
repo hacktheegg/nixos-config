@@ -2,13 +2,22 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ ... }:
+{ lib, ... }:
 
+let
+  deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile "./Configs/hostname" );
+in
 {
-  imports =
-    [
-      ./Builds/base.nix
-    ];
+
+  networking.hostName = deviceName;
+
+  imports = (
+    if deviceName == "Thinkpad-T460" then
+      [ "./Builds/Thinkpad-T460.nix" ]
+    else
+      throw "Device Hostname Missing or Unidentified, Please Configure"
+  );
+
 
 
   # Copy the NixOS configuration file and link it from the resulting system
