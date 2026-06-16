@@ -3,7 +3,7 @@
 set -e
 
 
-SCRIPT_DIR=$( dirname $( readlink -f "$0" ) )
+SCRIPT_DIR=$( dirname "$( readlink -f "$0" )" )
 cd "$SCRIPT_DIR/.."
 SOURCE_DIR=$( pwd )
 TARGET_DIR="/etc/nixos"
@@ -14,7 +14,7 @@ if [[ -n $( git status --porcelain ) ]] ; then
 	git status -s
 	echo ""
 
-	read -p "Commit Message: " COMMIT_MSG
+	read -r -p "Commit Message: " COMMIT_MSG
 
 	if [[ -z "$COMMIT_MSG" ]] ; then
 		echo "-- ERROR: Commit Message Required --"
