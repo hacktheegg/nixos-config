@@ -23,7 +23,7 @@ in
   imports =
     [
       ./../Hardware/Thinkpad-T460.nix
-      <home-manager/nixos>
+      #<home-manager/nixos>
 
       ./../Containers/i2p.nix
 
@@ -39,7 +39,9 @@ in
       ./../Modules/printing.nix
       # ./../Modules/qbittorrent.nix
       ./../Modules/qemu.nix
-      ./../Modules/users.nix
+
+      ./Users/hacktheegg.nix
+      ./Users/root.nix
     ];
 
 
