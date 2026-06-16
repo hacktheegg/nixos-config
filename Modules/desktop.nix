@@ -49,6 +49,8 @@
 
     kdePackages.konsole
 
+    nil
+
 #     libsForQt5.breeze-qt5
 
     libsForQt5.qtstyleplugin-kvantum
