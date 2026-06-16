@@ -5,7 +5,7 @@
 { lib, ... }:
 
 let
-  deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile "./Configs/hostname" );
+  deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile ./Configs/hostname );
 in
 {
 
