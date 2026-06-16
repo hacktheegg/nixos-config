@@ -2,7 +2,7 @@
 
 {
   containers.i2pd = {
-    autostart = true;
+    autoStart = true;
       config = { ... }: {
 
       networking.firewall.allowTCPPorts = [
