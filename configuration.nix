@@ -13,7 +13,7 @@ in
 
   imports = (
     if deviceName == "Thinkpad-T460" then
-      [ "./Builds/Thinkpad-T460.nix" ]
+      [ ./Builds/Thinkpad-T460.nix ]
     else
       throw "Device Hostname Missing or Unidentified, Please Configure"
   );
