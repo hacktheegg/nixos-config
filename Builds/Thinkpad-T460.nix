@@ -40,8 +40,8 @@ in
       # ./../Modules/qbittorrent.nix
       ./../Modules/qemu.nix
 
-      ./Users/hacktheegg.nix
-      ./Users/root.nix
+      ./../Users/hacktheegg.nix
+      ./../Users/root.nix
     ];
 
 
