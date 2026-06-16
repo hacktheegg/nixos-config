@@ -50,6 +50,7 @@
     kdePackages.konsole
 
     nil
+    bash-language-server
 
 #     libsForQt5.breeze-qt5
 
