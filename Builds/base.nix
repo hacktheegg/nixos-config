@@ -25,6 +25,8 @@ in
       ./../hardware-configuration.nix
       <home-manager/nixos>
 
+      ./../Containers/i2p.nix
+
       ./../Modules/bluetooth.nix
       ./../Modules/bootloader.nix
       ./../Modules/copyparty.nix

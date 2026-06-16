@@ -1,16 +1,44 @@
 { config, lib, pkgs, ... }:
 
 {
-    containers.i2pd = {
-        autostart = true;
-        config = { ... }: {
+  containers.i2pd = {
+    autostart = true;
+      config = { ... }: {
 
-        system.stateVersion = "25.11";
+      networking.firewall.allowTCPPorts = [
+        7656 # SAM
+        7070 # Webconsole
+        4447 # SOCKS proxy
+        4444 # HTTP proxy
+      ];
 
+      services.i2pd = {
+        enable = true;
+        address = "127.0.0.1";
+        proto = {
+          http = {
+            enable = true;
+            port = 7070;
+          };
+          httpProxy = {
+            enable = true;
+            port = 4444;
+          };
+          sam = {
+            enable = true;
+            port = 7656;
+          };
+          socksProxy = {
+            enable = true;
+            port = 4447;
+          };
         };
+      };
+
+      system.stateVersion = "25.11";
 
     };
-
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
