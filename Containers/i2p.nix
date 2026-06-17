@@ -6,6 +6,9 @@
     "d /containers/i2pd/var/lib/i2pd 0755 root root -"
   ];
 
+  networking.firewall.allowedTCPPorts = [ 45678 ];
+  networking.firewall.allowedUDPPorts = [ 45678 ];
+
 
   containers.i2pd = {
     autoStart = true;
@@ -24,6 +27,7 @@
         7070 # Webconsole
         4447 # SOCKS proxy
         4444 # HTTP proxy
+        45678
       ];
       networking.firewall.allowedUDPPorts = [ 45678 ];
 
@@ -34,18 +38,22 @@
         proto = {
           http = {
             enable = true;
+            address = "127.0.0.1";
             port = 7070;
           };
           httpProxy = {
             enable = true;
+            address = "127.0.0.1";
             port = 4444;
           };
           sam = {
             enable = true;
+            address = "127.0.0.1";
             port = 7656;
           };
           socksProxy = {
             enable = true;
+            address = "127.0.0.1";
             port = 4447;
           };
         };
