@@ -3,12 +3,12 @@
 {
 
   systemd.tmpfiles.rules = [
-    "d /containers/i2pd/var/lib/i2pd 0755 root root -"
+    "d /containers/i2pd/var/lib/i2pd 0755 150 150 -"
   ];
 
   networking.firewall.allowedTCPPorts = [ 45678 ];
   networking.firewall.allowedUDPPorts = [ 45678 ];
-  networking.firewall.enable = false; ### REMOVE LATER
+  networking.firewall.enable = true; ### REMOVE LATER
 
 
   containers.i2pd = {
