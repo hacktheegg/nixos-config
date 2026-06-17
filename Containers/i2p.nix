@@ -24,11 +24,12 @@
         7070 # Webconsole
         4447 # SOCKS proxy
         4444 # HTTP proxy
+        7650 # i2pControl
       ];
 
       services.i2pd = {
         enable = true;
-        address = "0.0.0.0";
+        address = "127.0.0.1";
         proto = {
           http = {
             enable = true;
@@ -45,6 +46,11 @@
           socksProxy = {
             enable = true;
             port = 4447;
+          };
+          i2pControl = {
+            address = "127.0.0.1";
+            enable = true;
+            port = 7650;
           };
         };
       };
