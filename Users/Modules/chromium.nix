@@ -2,6 +2,10 @@
 
 {
 
-  programs.chromium.enable = true;
-
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+    ];
+  };
 }
