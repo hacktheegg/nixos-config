@@ -8,7 +8,7 @@
 
   networking.firewall.allowedTCPPorts = [ 45678 ];
   networking.firewall.allowedUDPPorts = [ 45678 ];
-  networking.firewall.enable = true; ### REMOVE LATER
+  #networking.firewall.enable = true; ### REMOVE LATER
 
 
   containers.i2pd = {
@@ -36,6 +36,7 @@
         enable = true;
         address = "0.0.0.0";
         port = 45678;
+        upnp.enable = true;
         proto = {
           http = {
             enable = true;
