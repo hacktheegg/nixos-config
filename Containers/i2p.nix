@@ -8,6 +8,7 @@
 
   networking.firewall.allowedTCPPorts = [ 45678 ];
   networking.firewall.allowedUDPPorts = [ 45678 ];
+  networking.firewall.enable = false; ### REMOVE LATER
 
 
   containers.i2pd = {
