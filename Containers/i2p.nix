@@ -28,7 +28,7 @@
 
       services.i2pd = {
         enable = true;
-        address = "127.0.0.1";
+        address = "0.0.0.0";
         proto = {
           http = {
             enable = true;
