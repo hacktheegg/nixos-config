@@ -9,6 +9,11 @@ SOURCE_DIR=$( pwd )
 TARGET_DIR="/etc/nixos"
 
 
+echo "-- Validating Config --"
+nix-instantiate --readonly-mode --eval -E "(import <nixpkgs/nixos> { configuration = \"${SOURCE_DIR}/configuration.nix\"; }).config.system.build.toplevel.drvPath" -I nixos-config="${SOURCE_DIR}/configuration.nix"
+
+
+
 if [[ -n $( git status --porcelain ) ]] ; then
 	echo "-- Changes Made --"
 	git status -s

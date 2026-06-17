@@ -2,57 +2,17 @@
 
 {
 
-  systemd.tmpfiles.rules = [
-    "d /containers/i2pd/var/lib/i2pd 0755 root root -"
-  ];
+  imports =
+    [
 
+      ./../Modules/bootloader.nix
 
-  containers.i2pd = {
-    autoStart = true;
-    bindMounts = {
-      "i2pd" = {
-        hostPath = "/containers/i2pd/var/lib/i2pd";
-        isReadOnly = false;
-        mountPoint = "/var/lib/i2pd";
-      };
+      # Verify Before Adding
+      #./../Modules/git.nix
+      #./../Modules/mpd.nix
 
-    };
-    config = { ... }: {
-
-      networking.firewall.allowedTCPPorts = [
-        7656 # SAM
-        7070 # Webconsole
-        4447 # SOCKS proxy
-        4444 # HTTP proxy
-      ];
-
-      services.i2pd = {
-        enable = true;
-        address = "127.0.0.1";
-        proto = {
-          http = {
-            enable = true;
-            port = 7070;
-          };
-          httpProxy = {
-            enable = true;
-            port = 4444;
-          };
-          sam = {
-            enable = true;
-            port = 7656;
-          };
-          socksProxy = {
-            enable = true;
-            port = 4447;
-          };
-        };
-      };
-
-      system.stateVersion = "25.11";
-
-    };
-  };
+      ./../Users/root.nix
+    ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
