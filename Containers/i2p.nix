@@ -15,8 +15,8 @@
         isReadOnly = false;
         mountPoint = "/var/lib/i2pd";
       };
-
     };
+    privateNetwork = false;
     config = { ... }: {
 
       networking.firewall.allowedTCPPorts = [
@@ -25,10 +25,12 @@
         4447 # SOCKS proxy
         4444 # HTTP proxy
       ];
+      networking.firewall.allowedUDPPorts = [ 45678 ];
 
       services.i2pd = {
         enable = true;
-        address = "0.0.0.0";
+        address = "127.0.0.1";
+        port = 45678;
         proto = {
           http = {
             enable = true;
