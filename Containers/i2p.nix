@@ -34,7 +34,7 @@
 
       services.i2pd = {
         enable = true;
-        address = "0.0.0.0";
+#         address = "0.0.0.0";
         port = 45678;
         upnp.enable = true;
         proto = {
