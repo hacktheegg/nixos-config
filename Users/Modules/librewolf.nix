@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
 
@@ -60,6 +60,46 @@
           "network.proxy.ssl_port" =              4444;
           "network.proxy.type" =                  1;
         };
+      };
+    };
+  };
+
+  xdg.desktopEntries.librewolf-i2p = {
+    name = "LibreWolf (I2P)";
+    genericName = "Web Browser";
+
+    exec = "${pkgs.librewolf}/bin/librewolf --name librewolf-i2p -P I2P -no-remote %U";
+
+    icon = "librewolf";
+
+    terminal = false;
+    startupNotify = true;
+
+    categories = [ "Network" "WebBrowser" ];
+
+    mimeType = [
+      "text/html"
+      "text/xml"
+      "application/xhtml+xml"
+      "application/vnd.mozilla.xul+xml"
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+    ];
+
+    settings = {
+      StartupWMClass = "librewolf-i2p";
+      Actions = "new-private-window;new-window";
+    };
+
+    actions = {
+      new-window = {
+        name = "New Window";
+        exec = "${pkgs.librewolf}/bin/librewolf --name librewolf-i2p -P I2P -no-remote --new-window %U";
+      };
+
+      new-private-window = {
+        name = "New Private Window";
+        exec = "${pkgs.librewolf}/bin/librewolf --name librewolf-i2p -P I2P -no-remote --private-window %U";
       };
     };
   };
