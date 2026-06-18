@@ -7,6 +7,7 @@
     profiles = {
       "Original" = {
         isDefault = true;
+        id = 0;
         extensions = {
           # Get them yourself
           # UBlock Origin
@@ -15,15 +16,17 @@
           # Indie Wiki Buddy
           # Ruffle - Flash Emulator
         };
-        search.engines = {
-          nixos-wiki = {
-            name = "SearXNG";
-            urls = [{ template = "https://searxng.hacktheegg.cc/search?q={searchTerms}&category_general=1&language=auto&time_range=&safesearch=0&theme=simple"; }];
-            iconMapObj."16" = "https://searxng.hacktheegg.cc/favicon.ico";
-            definedAliases = [ "@srx" ];
+        search = {
+          engines = {
+            searxng = {
+              name = "SearXNG";
+              urls = [{ template = "https://searxng.hacktheegg.cc/search?q={searchTerms}&category_general=1&language=auto&time_range=&safesearch=0&theme=simple"; }];
+              iconMapObj."16" = "https://searxng.hacktheegg.cc/favicon.ico";
+              definedAliases = [ "@srx" ];
+            };
           };
-          default = "srx";
-          privateDefault = "srx";
+          default = "searxng";
+          privateDefault = "searxng";
 
         };
         settings = {
@@ -32,6 +35,8 @@
         };
       };
       "I2P" = {
+        isDefault = false;
+        id = 1;
         extensions = {
           # Get them yourself
           # UBlock Origin
