@@ -17,7 +17,6 @@
     adwaita-icon-theme
 
     kdePackages.okular
-    librewolf
     obsidian # Unfree
     vesktop # Unfree
     gimp
