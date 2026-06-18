@@ -31,8 +31,8 @@
 
         };
         settings = {
-          "sidebar.verticalTabs" =                          "true";
-          "sidebar.verticalTabs.dragToPinPromo.dismissed" = "true";
+          "sidebar.verticalTabs" =                          true;
+          "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
         };
       };
       "I2P" = {
