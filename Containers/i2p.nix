@@ -2,67 +2,45 @@
 
 {
 
-  systemd.tmpfiles.rules = [
-    "d /containers/i2pd/var/lib/i2pd 0755 150 150 -"
-  ];
+#   systemd.tmpfiles.rules = [
+#     "d /containers/i2pd/var/lib/i2pd 0755 150 150 -"
+#   ];
 
-  networking.firewall.allowedTCPPorts = [ 45678 ];
-  networking.firewall.allowedUDPPorts = [ 45678 ];
+#   networking.firewall.allowedTCPPorts = [ 45678 ];
+#   networking.firewall.allowedUDPPorts = [ 45678 ];
   #networking.firewall.enable = true; ### REMOVE LATER
 
-
-  containers.i2pd = {
+  containers.i2pd-container = {
     autoStart = true;
-    bindMounts = {
-      "i2pd" = {
-        hostPath = "/containers/i2pd/var/lib/i2pd";
-        isReadOnly = false;
-        mountPoint = "/var/lib/i2pd";
-      };
-    };
-    privateNetwork = false;
+#     bindMounts = {
+#       "i2pd" = {
+#         hostPath = "/containers/i2pd/var/lib/i2pd";
+#         isReadOnly = false;
+#         mountPoint = "/var/lib/i2pd";
+#       };
+#     };
     config = { ... }: {
 
+      system.stateVersion = "23.05"; # If you don't add a state version, nix will complain at every rebuild
+
+      # Exposing the nessecary ports in order to interact with i2p from outside the container
       networking.firewall.allowedTCPPorts = [
-        7656 # SAM
-        7070 # Webconsole
-        4447 # SOCKS proxy
-        4444 # HTTP proxy
-        45678
+        7656 # default sam port
+        7070 # default web interface port
+        4447 # default socks proxy port
+        4444 # default http proxy port
       ];
-      networking.firewall.allowedUDPPorts = [ 45678 ];
 
       services.i2pd = {
         enable = true;
-#         address = "0.0.0.0";
-        port = 45678;
-        upnp.enable = true;
+        address = "127.0.0.1"; # you may want to set this to 0.0.0.0 if you are planning to use an ssh tunnel
         proto = {
-          http = {
-            enable = true;
-            address = "127.0.0.1";
-            port = 7070;
-          };
-          httpProxy = {
-            enable = true;
-            address = "127.0.0.1";
-            port = 4444;
-          };
-          sam = {
-            enable = true;
-            address = "127.0.0.1";
-            port = 7656;
-          };
-          socksProxy = {
-            enable = true;
-            address = "127.0.0.1";
-            port = 4447;
-          };
+          http.enable = true;
+          socksProxy.enable = true;
+          httpProxy.enable = true;
+          sam.enable = true;
         };
       };
-
-      system.stateVersion = "25.11";
-
     };
   };
 
