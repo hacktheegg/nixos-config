@@ -17,6 +17,7 @@
           # Ruffle - Flash Emulator
         };
         search = {
+          force = true;
           engines = {
             searxng = {
               name = "SearXNG";
@@ -25,8 +26,8 @@
               definedAliases = [ "@srx" ];
             };
           };
-          default = "searxng";
-          privateDefault = "searxng";
+          default = "SearXNG";
+          privateDefault = "SearXNG";
 
         };
         settings = {
@@ -45,19 +46,19 @@
 
         settings = {
           "browser.contentblocking.category" =    "strict";
-          "dom.security.https_only_mode" =        "false";
-          "javascript.enabled" =                  "false";
-          "keyword.enabled" =                     "false";
-          "network.proxy.backup.ssl" =            "172.0.0.1";
-          "network.proxy.backup.ssl_port" =       "4444";
+          "dom.security.https_only_mode" =        false;
+          "javascript.enabled" =                  false;
+          "keyword.enabled" =                     false;
+          "network.proxy.backup.ssl" =            "127.0.0.1";
+          "network.proxy.backup.ssl_port" =       4444;
           "network.proxy.http" =                  "127.0.0.1";
-          "network.proxy.http_port" =             "4444";
+          "network.proxy.http_port" =             4444;
           "network.proxy.share_proxy_settings" =  "true";
           "network.proxy.socks" =                 "127.0.0.1";
-          "network.proxy.socks_port" =            "4447";
+          "network.proxy.socks_port" =            4447;
           "network.proxy.ssl" =                   "127.0.0.1";
-          "network.proxy.ssl_port" =              "4444";
-          "network.proxy.type" =                  "1";
+          "network.proxy.ssl_port" =              4444;
+          "network.proxy.type" =                  1;
         };
       };
     };
