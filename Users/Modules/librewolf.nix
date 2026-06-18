@@ -16,14 +16,19 @@
       "Original" = {
         isDefault = true;
         id = 0;
-        extensions = {
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          noscript
+          floccus
+          indie-wiki-buddy
+          ruffle_rs
           # Get them yourself
           # UBlock Origin
           # NoScript
           # Floccus Bookmarks Sync
           # Indie Wiki Buddy
           # Ruffle - Flash Emulator
-        };
+        ];
         search = {
           force = true;
           engines = {
@@ -46,11 +51,13 @@
       "I2P" = {
         isDefault = false;
         id = 1;
-        extensions = {
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          noscript
           # Get them yourself
           # UBlock Origin
           # NoScript
-        };
+        ];
 
         settings = {
           "browser.contentblocking.category" =    "strict";
