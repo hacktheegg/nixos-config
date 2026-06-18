@@ -2,9 +2,9 @@
 
 {
 
-#   systemd.tmpfiles.rules = [
-#     "d /containers/i2pd/var/lib/i2pd 0755 150 150 -"
-#   ];
+  systemd.tmpfiles.rules = [
+    "d /containers/i2pd/var/lib/i2pd 0755 150 150 -"
+  ];
 
 #   networking.firewall.allowedTCPPorts = [ 45678 ];
 #   networking.firewall.allowedUDPPorts = [ 45678 ];
@@ -12,16 +12,16 @@
 
   containers.i2pd-container = {
     autoStart = true;
-#     bindMounts = {
-#       "i2pd" = {
-#         hostPath = "/containers/i2pd/var/lib/i2pd";
-#         isReadOnly = false;
-#         mountPoint = "/var/lib/i2pd";
-#       };
-#     };
+    bindMounts = {
+      "i2pd" = {
+        hostPath = "/containers/i2pd/var/lib/i2pd";
+        isReadOnly = false;
+        mountPoint = "/var/lib/i2pd";
+      };
+    };
     config = { ... }: {
 
-      system.stateVersion = "23.05"; # If you don't add a state version, nix will complain at every rebuild
+      system.stateVersion = "25.11"; # If you don't add a state version, nix will complain at every rebuild
 
       # Exposing the nessecary ports in order to interact with i2p from outside the container
       networking.firewall.allowedTCPPorts = [
