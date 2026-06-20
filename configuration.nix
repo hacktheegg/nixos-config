@@ -14,6 +14,8 @@ in
   imports = (
     if deviceName == "Thinkpad-T460" then
       [ ./Builds/Thinkpad-T460.nix ]
+    else if deviceName == "Minix-NEO" then
+      [ ./Builds/Minix_NEO_Z83-4.nix ]
     else
       throw "Device Hostname Missing or Unidentified, Please Configure"
   );
