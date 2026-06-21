@@ -3,11 +3,6 @@
 {
 
   environment.systemPackages = with pkgs; [
-    fastfetch
-    nmap
-    p7zip
-    vim
-
     vlc
     pwvucontrol
     kdePackages.dolphin

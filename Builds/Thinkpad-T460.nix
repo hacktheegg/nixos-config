@@ -57,10 +57,8 @@ in
     protonmail-bridge-gui
 
     nulloy
-    tree
-    p7zip
 
-    btop
+
     solaar
     jellyfin-mpv-shim
     picard

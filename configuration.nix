@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 let
   deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile ./Configs/hostname );
@@ -19,6 +19,61 @@ in
     else
       throw "Device Hostname Missing or Unidentified, Please Configure"
   );
+
+
+  environment.systemPackages = with pkgs; [
+    fastfetch
+    tree
+    p7zip
+    btop
+    vim
+    nmap
+  ];
+
+  programs = {
+    tmux = {
+      enable = true;
+      newSession = true;
+      escapeTime = 0;
+      extraConfig = ''
+        set -g mouse on
+        set -g default-terminal "tmux-256color"
+        set -as terminal-features ",xterm-256color:RGB"
+        set -g status-position top
+      '';
+    };
+  };
+
+#   services.ntfy-sh = {
+#     settings.base-url = "https://ntfy";
+#     enable = true;
+#   };
+
+  systemd.services.nixos-update-check = {
+    description = "Uses NTFY to Alert Attention Needed";
+    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy pkgs._9base ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      WorkingDirectory = "/etc/nixos";
+      EnvironmentFile = "/run/agenix/nixos-update-check-env.age";
+    };
+
+    script = ''
+      export notifPath="$(sha1sum /run/agenix/nixos-update-check-env.age | awk '{print $1})"
+
+
+      export HOME=/root
+      git config --global safe.directory /etc/nixos
+
+      touch output.txt
+      git fetch --porcelain > output
+    '';
+
+    startAt = "daily";
+    enable = false;
+  };
 
 
 

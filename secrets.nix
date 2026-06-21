@@ -6,5 +6,6 @@ in
     "./Secrets/forgejo-token.age".publicKeys = [ rootUser ];
     "./Secrets/restic-repo-password.age".publicKeys = [ rootUser ];
     "./Secrets/restic-env.age".publicKeys = [ rootUser ];
+    "./Secrets/nixos-update-check-env.age".publicKeys = [ rootUser ];
 }
 
