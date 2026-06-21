@@ -19,7 +19,7 @@
     tor-browser
     vscodium
     qalculate-qt
-#     aisleriot
+    aisleriot
 
     swaynotificationcenter
     libnotify
@@ -51,7 +51,7 @@
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
 
-    swww
+    awww
 
   ];
 

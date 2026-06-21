@@ -38,12 +38,12 @@ in
       ./../Modules/copyparty.nix
       ./../Modules/desktop.nix
       ./../Modules/git.nix
-      ./../Modules/mailserver.nix
-      ./../Modules/mpd.nix
+      # ./../Modules/mailserver.nix
+      # ./../Modules/mpd.nix
       ./../Modules/mpv.nix
       ./../Modules/network.nix
       ./../Modules/password-store.nix
-      ./../Modules/printing.nix
+      # ./../Modules/printing.nix
       # ./../Modules/qbittorrent.nix
       ./../Modules/qemu.nix
 
@@ -77,7 +77,7 @@ in
     qpwgraph
 
     wireguard-tools
-    protonvpn-gui
+    proton-vpn
 
     kdePackages.kdenlive
     pantheon.elementary-camera
