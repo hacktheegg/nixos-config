@@ -2,10 +2,6 @@
 
 {
 
-  imports = [
-    <home-manager/nixos>
-  ];
-
   home-manager.users = {
     root = {
       home.stateVersion = "25.11";

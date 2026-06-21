@@ -13,14 +13,14 @@
     network.listenAddress = "127.0.0.1";
     network.port = 6600;
 
-    extraConfig = ''
-      zeroconf_enabled "no"
-
-      audio_output {
-        type "pipewire"
-        name "PipeWire Output"
-      }
-    '';
+#     extraConfig = ''
+#       zeroconf_enabled "no"
+#
+#       audio_output {
+#         type "pipewire"
+#         name "PipeWire Output"
+#       }
+#     '';
   };
 
   systemd.services.mpd.environment = {

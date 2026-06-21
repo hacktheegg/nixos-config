@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    <home-manager/nixos>
-  ];
 
   users.users.hacktheegg = {
     isNormalUser = true;
