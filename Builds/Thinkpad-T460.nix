@@ -22,6 +22,8 @@ in
 {
   imports =
     [
+      "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
+
       ./../Hardware/Thinkpad-T460.nix
       #<home-manager/nixos>
 
@@ -129,7 +131,7 @@ in
 
     wallpaperPkg
 
-    (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
+    # (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
 
     yt-dlp
 

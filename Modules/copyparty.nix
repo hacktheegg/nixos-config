@@ -9,7 +9,8 @@ in
 {
 
   imports = [
-    <agenix/modules/age.nix>
+#     <agenix/modules/age.nix>
+    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
     "${copyparty}/contrib/nixos/modules/copyparty.nix"
   ];
 
