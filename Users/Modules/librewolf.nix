@@ -45,16 +45,16 @@
               definedAliases = [ "@srx" ];
             };
           };
-          default = "SearXNG";
-          privateDefault = "SearXNG";
+          default = "srx";
+          privateDefault = "srx";
 
         };
         settings = {
           "sidebar.verticalTabs" =                          true;
           "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
 
-          "browser.search.defaultenginename" =              "SearXNG";
-          "browser.search.order.1" =                        "SearXNG";
+#           "browser.search.defaultenginename" =              "SearXNG";
+#           "browser.search.order.1" =                        "SearXNG";
         };
       };
       "I2P" = {
