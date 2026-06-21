@@ -3,33 +3,79 @@
 set -e
 
 
+
+# --- Default Variables ---
+SKIP_VALIDATION=false
+SKIP_GIT=false
+
+# --- Help Menu ---
+show_help() {
+    echo "Usage: $(basename "$0") [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  --skip-validation    Skip the Nix configuration validation step."
+    echo "  --skip-git           Skip git checking, committing, pulling, and pushing."
+    echo "  -h, --help           Show this help message."
+    exit 0
+}
+
+# --- Parse Arguments ---
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --skip-validation)
+            SKIP_VALIDATION=true
+            shift
+            ;;
+        --skip-git)
+            SKIP_GIT=true
+            shift
+            ;;
+        -h|--help)
+            show_help
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Use -h or --help for usage details."
+            exit 1
+            ;;
+    esac
+done
+
+
+
 SCRIPT_DIR=$( dirname "$( readlink -f "$0" )" )
 cd "$SCRIPT_DIR/.."
 SOURCE_DIR=$( pwd )
 TARGET_DIR="/etc/nixos"
 
-
-echo "-- Validating Config --"
-nix-instantiate --readonly-mode --eval -E "(import <nixpkgs/nixos> { configuration = \"${SOURCE_DIR}/configuration.nix\"; }).config.system.build.toplevel.drvPath" -I nixos-config="${SOURCE_DIR}/configuration.nix"
-
-
-
-if [[ -n $( git status --porcelain ) ]] ; then
-	echo "-- Changes Made --"
-	git status -s
-	echo ""
-
-	read -r -p "Commit Message: " COMMIT_MSG
-
-	if [[ -z "$COMMIT_MSG" ]] ; then
-		echo "-- ERROR: Commit Message Required --"
-		exit 1
-	fi
-
-	git add .
-	git commit -m "$COMMIT_MSG"
+if [ "$SKIP_VALIDATION" = false ]; then
+	echo "-- Validating Config --"
+	nix-instantiate --readonly-mode --eval -E "(import <nixpkgs/nixos> { configuration = \"${SOURCE_DIR}/configuration.nix\"; }).config.system.build.toplevel.drvPath" -I nixos-config="${SOURCE_DIR}/configuration.nix"
 else
-	echo "-- No Changes Found. Continuing --"
+    echo "-- Skipping Validation --"
+fi
+
+
+if [ "$SKIP_GIT" = false ]; then
+	if [[ -n $( git status --porcelain ) ]] ; then
+		echo "-- Changes Made --"
+		git status -s
+		echo ""
+
+		read -r -p "Commit Message: " COMMIT_MSG
+
+		if [[ -z "$COMMIT_MSG" ]] ; then
+			echo "-- ERROR: Commit Message Required --"
+			exit 1
+		fi
+
+		git add .
+		git commit -m "$COMMIT_MSG"
+	else
+		echo "-- No Changes Found. Continuing --"
+	fi
+else
+    echo "-- Skipping Git Operations --"
 fi
 
 
@@ -40,9 +86,10 @@ run0 git -C "$TARGET_DIR" pull "${SOURCE_DIR}" "main"
 echo "-- Running Rebuild --"
 run0 nixos-rebuild switch
 
-
-echo "-- Updating Remote --"
-git push origin main
+if [ "$SKIP_GIT" = false ]; then
+	echo "-- Updating Remote --"
+	git push origin main
+fi
 
 
 echo "-- Complete --"
