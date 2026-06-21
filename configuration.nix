@@ -16,6 +16,8 @@ in
       [ ./Builds/Thinkpad-T460.nix ]
     else if deviceName == "Minix-NEO" then
       [ ./Builds/Minix_NEO_Z83-4.nix ]
+    else if deviceName == "HP-Mini" then
+      [ ./Builds/HP-Mini.nix ]
     else
       throw "Device Hostname Missing or Unidentified, Please Configure"
   );
