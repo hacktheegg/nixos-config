@@ -75,7 +75,7 @@ in
       echo "Sub Path: $(notifPath)"
 
       if [ $BEHIND_COUNT -gt -1 ] ; then
-        ntfy publish $notifPath "$(hostname) Requires Update"
+        ntfy publish "$notifPath" "$(hostname) Requires Update"
       fi
 
     '';
