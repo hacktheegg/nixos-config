@@ -53,7 +53,7 @@ in
 
   systemd.services.nixos-update-check = {
     description = "Uses NTFY to Alert Attention Needed";
-    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy pkgs._9base ];
+    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy pkgs._9base pkgs.hostname ];
 
     serviceConfig = {
       Type = "oneshot";
@@ -65,16 +65,21 @@ in
     script = ''
       export notifPath="$(sha1sum /run/agenix/nixos-update-check-env.age | awk '{print $1})"
 
-
-      export HOME=/root
       git config --global safe.directory /etc/nixos
 
-      touch output.txt
-      git fetch --porcelain > output
+      git fetch origin main
+      export BEHIND_COUNT=$(git rev-list --count HEAD..origin/main)
+
+      echo "Sub Path: $(notifPath)"
+
+      if [ $BEHIND_COUNT -gt -1 ] ; then
+        ntfy publish $notifPath "$(hostname) Requires Update"
+      fi
+
     '';
 
     startAt = "daily";
-    enable = false;
+    enable = true;
   };
 
 

@@ -46,6 +46,7 @@
     '';
 
     startAt = "daily";
+    enable = false;
   };
 
   environment.sessionVariables = rec {
