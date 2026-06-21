@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 let
   deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile ./Configs/hostname );
@@ -51,6 +51,8 @@ in
 #     enable = true;
 #   };
 
+  age.secrets.nixos-update-check-env.file = ./Secrets/nixos-update-check-env.age;
+
   systemd.services.nixos-update-check = {
     description = "Uses NTFY to Alert Attention Needed";
     path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy pkgs._9base pkgs.hostname ];
@@ -59,11 +61,11 @@ in
       Type = "oneshot";
       User = "root";
       WorkingDirectory = "/etc/nixos";
-      EnvironmentFile = "/run/agenix/nixos-update-check-env.age";
+      EnvironmentFile = config.age.secrets.nixos-update-check-env.path;
     };
 
     script = ''
-      export notifPath="$(sha1sum /run/agenix/nixos-update-check-env.age | awk '{print $1})"
+      export notifPath="$(sha1sum "''+config.age.secrets.nixos-update-check-env.path+''" | awk '{print $1}')"
 
       git config --global safe.directory /etc/nixos
 
