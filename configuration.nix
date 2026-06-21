@@ -65,14 +65,14 @@ in
     };
 
     script = ''
-      export notifPath="$(sha1sum "''+config.age.secrets.nixos-update-check-env.path+''" | awk '{print $1}')"
+      export notifPath="$(sha1sum "${config.age.secrets.nixos-update-check-env.path}" | awk '{print $1}')"
 
       git config --global safe.directory /etc/nixos
 
       git fetch origin main
       export BEHIND_COUNT=$(git rev-list --count HEAD..origin/main)
 
-      echo "Sub Path: $(notifPath)"
+      echo "Sub Path: $notifPath"
 
       if [ $BEHIND_COUNT -gt -1 ] ; then
         ntfy publish "$notifPath" "$(hostname) Requires Update"
