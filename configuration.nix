@@ -11,7 +11,9 @@ in
 
   networking.hostName = deviceName;
 
-  imports = (
+  imports = [
+    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
+  ] ++ (
     if deviceName == "Thinkpad-T460" then
       [ ./Builds/Thinkpad-T460.nix ]
     else if deviceName == "Minix-NEO" then
@@ -30,6 +32,7 @@ in
     btop
     vim
     nmap
+    git
   ];
 
   programs = {
@@ -46,10 +49,7 @@ in
     };
   };
 
-#   services.ntfy-sh = {
-#     settings.base-url = "https://ntfy";
-#     enable = true;
-#   };
+  services.openssh.enable = true;
 
   age.secrets.nixos-update-check-env.file = ./Secrets/nixos-update-check-env.age;
 
