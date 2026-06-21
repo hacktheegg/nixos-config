@@ -35,6 +35,7 @@ in
       ./../Modules/mailserver.nix
       ./../Modules/mpd.nix
       ./../Modules/mpv.nix
+      ./../Modules/network.nix
       ./../Modules/password-store.nix
       ./../Modules/printing.nix
       # ./../Modules/qbittorrent.nix
@@ -225,19 +226,11 @@ in
   #  };
   #};
 
-  i18n.defaultLocale = "en_AU.UTF-8";
   time = {
     timeZone = "Australia/NSW";
     hardwareClockInLocalTime = false;
   };
   nixpkgs.config.allowUnfree = true;
-
-  networking = {
-    hostName = "Thinkpad-T460";
-    networkmanager.enable = true;
-#     nat.enable = true;
-#     nat.internalInterfaces = [ "enp0s8" ]; # Match your guest ID
-  };
 
   programs = {
     localsend.enable = true;
