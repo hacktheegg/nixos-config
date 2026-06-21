@@ -51,6 +51,7 @@ in
 
   services.openssh.enable = true;
 
+  age.identityPaths = [ "/root/.ssh/id_ed25519" ];
   age.secrets.nixos-update-check-env.file = ./Secrets/nixos-update-check-env.age;
 
   systemd.services.nixos-update-check = {
