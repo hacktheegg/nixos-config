@@ -72,10 +72,10 @@ in
       git fetch origin main
       export BEHIND_COUNT=$(git rev-list --count HEAD..origin/main)
 
-      echo "Sub Path: $notifPath"
 
-      if [ $BEHIND_COUNT -gt -1 ] ; then
-        ntfy publish "$notifPath" "$(hostname) Requires Update"
+      if [ $BEHIND_COUNT -gt 0 ] ; then
+        echo "Sub Path: $notifPath"
+        ntfy publish -u "$NTFY_USERNAME":"$NTFY_PASSWORD" "$NTFY_BASE_URL/$notifPath" "$(hostname) Requires Update"
       fi
 
     '';
