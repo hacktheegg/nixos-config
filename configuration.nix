@@ -55,7 +55,7 @@ in
 
   systemd.services.nixos-update-check = {
     description = "Uses NTFY to Alert Attention Needed";
-    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy pkgs._9base pkgs.hostname ];
+    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy-sh pkgs._9base pkgs.hostname ];
 
     serviceConfig = {
       Type = "oneshot";
