@@ -51,6 +51,8 @@ in
       ./../Users/root.nix
     ];
 
+  boot.kernelModules = [ "ip_tables" "iptable_nat" "iptable_filter" ];
+
 
 
   environment.systemPackages = with pkgs; [
@@ -170,7 +172,7 @@ in
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d --quiet";
+    options = "--delete-older-than 7d --quiet";
     persistent = true;
     randomizedDelaySec = "1d";
   };
