@@ -13,8 +13,9 @@
       home.stateVersion = "25.11";
 
       imports = [
-        ./Modules/librewolf.nix
         ./Modules/chromium.nix
+        ./Modules/librewolf.nix
+        ./Modules/equibop.nix
       ];
 
       programs = {

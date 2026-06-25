@@ -13,7 +13,7 @@
 
     kdePackages.okular
     obsidian # Unfree
-    vesktop # Unfree
+#     vesktop # Unfree
     gimp
     libreoffice
     tor-browser
