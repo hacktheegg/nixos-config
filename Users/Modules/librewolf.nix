@@ -3,10 +3,10 @@
 {
 
   nixpkgs.config = {
-    permittedInsecurePackages = [
-      "librewolf-151.0.2-1"
-      "librewolf-unwrapped-151.0.2-1"
-    ];
+#     permittedInsecurePackages = [
+#       "librewolf-151.0.2-1"
+#       "librewolf-unwrapped-151.0.2-1"
+#     ];
     packageOverrides = pkgs: {
       nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
         inherit pkgs;
