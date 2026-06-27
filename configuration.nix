@@ -20,7 +20,7 @@ in
       [ ./Builds/Minix_NEO_Z83-4.nix ]
     else if deviceName == "HP-Mini" then
       [ ./Builds/HP-Mini.nix ]
-    else
+    else ## MARKER ##
       throw "Device Hostname Missing or Unidentified, Please Configure"
   );
 
@@ -33,6 +33,11 @@ in
     vim
     nmap
     git
+
+    # Language Servers
+    nil
+    bash-language-server
+    marksman
   ];
 
   i18n.defaultLocale = "en_AU.UTF-8";

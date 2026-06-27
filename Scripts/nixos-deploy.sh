@@ -3,6 +3,9 @@
 set -e
 
 
+# git log --oneline -n 1 $( echo "HP-Mini" ) | awk -F ' ' '{print $1}'
+# git log --oneline -n 1 $( hostname ) | awk -F ' ' '{print $1}'
+
 
 # --- Default Variables ---
 SKIP_VALIDATION=false

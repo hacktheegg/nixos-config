@@ -70,6 +70,18 @@ else
 From here your entries in `./Builds/` is what controls each device, allowing for efficient, module-based configuration.
 
 
+### TODO:
+
+- [ ] Script to quick-setup a dev environment `./Scripts/init.sh`
+- [ ] Manual (command `man`)
+- [ ] Fix Dark Mode to be Fully Uniform
+- [ ] Keyring
+- [ ] Port Homeserver from Arch/Docker to NixOS
+- [ ] Theming
+- [ ] Look over the XDG standard for paths and figure out what to change
+- [ ] Add ssh key for Minix Neo
+
+
 ## Feedback and Contributing
 
 As of typing this, there is no system for feedback or contributions and there is a good chance that there will never be as this is my own personal config for my devices
@@ -78,3 +90,5 @@ As of typing this, there is no system for feedback or contributions and there is
 ### Related
 
 README Template: https://github.com/banesullivan/README/blob/main/TEMPLATE.md
+Tab Completion Guide:
+- https://tldp.org/LDP/abs/html/tabexpansion.html
