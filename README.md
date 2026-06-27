@@ -80,6 +80,7 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 - [ ] Theming
 - [ ] Look over the XDG standard for paths and figure out what to change
 - [ ] Add ssh key for Minix Neo
+- [ ] Remove FLAKE support (It's already gone)
 
 
 ## Feedback and Contributing

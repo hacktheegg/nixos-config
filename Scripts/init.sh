@@ -52,6 +52,7 @@ if [ "$VAR_HOSTNAME" ] ; then
     echo "${VAR_HOSTNAME}"
     # add ./Configs/hostname
     # add ./Hardware/${$VAR_HOSTNAME}
+        # nixos-generate-config --dir dir --show-hardware-config
     # add ./Builds/${$VAR_HOSTNAME}
     # INJECT BELOW LINES ABOVE [ ## MARKER ## ]
     #else if deviceName == "${$VAR_HOSTNAME}" then
