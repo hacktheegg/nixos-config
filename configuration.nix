@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, /*deviceName ? lib.strings.removeSuffix "\n" (builtins.readFile ./Configs/hostname),*/ ... }:
 
 let
   deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile ./Configs/hostname );
@@ -35,9 +35,13 @@ in
     git
 
     # Language Servers
-    nil
     bash-language-server
+    glsl_analyzer
+    libclang
     marksman
+    neocmakelsp
+    nil
+    vscode-json-languageserver
   ];
 
   i18n.defaultLocale = "en_AU.UTF-8";

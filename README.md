@@ -73,6 +73,7 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 ### TODO:
 
 - [ ] Script to quick-setup a dev environment `./Scripts/init.sh`
+- [ ] Auto move tags to indicate version each device is at
 - [ ] Manual (command `man`)
 - [ ] Fix Dark Mode to be Fully Uniform
 - [ ] Keyring
@@ -81,6 +82,8 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 - [ ] Look over the XDG standard for paths and figure out what to change
 - [ ] Add ssh key for Minix Neo
 - [ ] Remove FLAKE support (It's already gone)
+- [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server
+- [ ] Finish ageless NixOS setup
 
 
 ## Feedback and Contributing
@@ -91,5 +94,5 @@ As of typing this, there is no system for feedback or contributions and there is
 ### Related
 
 README Template: https://github.com/banesullivan/README/blob/main/TEMPLATE.md
-Tab Completion Guide:
-- https://tldp.org/LDP/abs/html/tabexpansion.html
+Tab Completion Guide: https://tldp.org/LDP/abs/html/tabexpansion.html
+Ageless Linux `./Modules/ageless-linux.nix` Source: https://agelesslinux.github.io/age-reporting/distro-specific.html
