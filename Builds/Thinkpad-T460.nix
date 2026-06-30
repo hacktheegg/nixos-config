@@ -42,7 +42,6 @@ in
       # ./../Modules/mpd.nix
       ./../Modules/mpv.nix
       ./../Modules/network.nix
-      ./../Modules/password-store.nix
       # ./../Modules/printing.nix
       # ./../Modules/qbittorrent.nix
       ./../Modules/qemu.nix
@@ -58,7 +57,6 @@ in
   environment.systemPackages = with pkgs; [
     ffmpeg
     lutris
-    pass
     vlc-bittorrent
     conky
     element-desktop

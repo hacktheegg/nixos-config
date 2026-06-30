@@ -36,6 +36,7 @@ in
 
     # Language Servers
     bash-language-server
+    cppcheck
     glsl_analyzer
     libclang
     marksman

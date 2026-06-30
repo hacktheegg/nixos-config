@@ -72,6 +72,7 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 
 ### TODO:
 
+- [ ] Waydroid networking fix cause it currently doesnt open
 - [ ] Script to quick-setup a dev environment `./Scripts/init.sh`
 - [ ] Auto move tags to indicate version each device is at
 - [ ] Manual (command `man`)
@@ -93,6 +94,7 @@ As of typing this, there is no system for feedback or contributions and there is
 
 ### Related
 
-README Template: https://github.com/banesullivan/README/blob/main/TEMPLATE.md
-Tab Completion Guide: https://tldp.org/LDP/abs/html/tabexpansion.html
-Ageless Linux `./Modules/ageless-linux.nix` Source: https://agelesslinux.github.io/age-reporting/distro-specific.html
+- README Template: https://github.com/banesullivan/README/blob/main/TEMPLATE.md
+- Tab Completion Guide: https://tldp.org/LDP/abs/html/tabexpansion.html
+- Ageless Linux `./Modules/ageless-linux.nix` Source: https://agelesslinux.github.io/age-reporting/distro-specific.html
+- Keyring Setup Guide: https://github.com/VoidNxSEC/nixos/blob/64a4aaf17006a5ec130867cf4a7ecf32e3d3986b/docs/guides/OS-KEYRING-SETUP.md

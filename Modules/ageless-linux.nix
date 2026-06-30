@@ -128,6 +128,7 @@
     '';
     ## refusal document ##
 
+
     ## agelessd INCOMPLETE ##
 #     "ageless/agelessd" = lib.mkForce ''
 #       #!/bin/bash
@@ -202,40 +203,39 @@
 #       done < /etc/passwd
 #     '';
     ## agelessd INCOMPLETE ##
-
-    ## agelessd service INCOMPLETE ##
-    systemd.services.agelessd = {
-      after = "systemd-userdbd.service";
-      description = "Ageless Linux birthDate neutralization (systemd PR #40954)";
-      documentation = "https://agelesslinux.org";
-
-      serviceConfig = {
-        Type = "oneshot";
-#         ExecStart = "/etc/ageless/agelessd";
-      };
-
-      enable = false;
-    };
-    ## agelessd service INCOMPLETE ##
-
-    ## agelessd timer INCOMPLETE ##
-    systemd.timers.agelessd = {
-      description = "Neutralize systemd userdb birthDate fields every 24 hours";
-      documentation = "https://agelesslinux.org";
-
-      timerConfig = {
-        OnBootSec = "5min";
-        OnUnitActiveSec = "24h";
-        Persistent = true;
-      };
-
-      wantedBy = "timers.target";
-
-      enable = false;
-    };
-    ## agelessd timer INCOMPLETE ##
-
   };
+
+  ## agelessd service INCOMPLETE ##
+  systemd.services.agelessd = {
+    after = "systemd-userdbd.service";
+    description = "Ageless Linux birthDate neutralization (systemd PR #40954)";
+    documentation = "https://agelesslinux.org";
+
+    serviceConfig = {
+      Type = "oneshot";
+#       ExecStart = "/etc/ageless/agelessd";
+    };
+
+    enable = false;
+  };
+  ## agelessd service INCOMPLETE ##
+
+  ## agelessd timer INCOMPLETE ##
+  systemd.timers.agelessd = {
+    description = "Neutralize systemd userdb birthDate fields every 24 hours";
+    documentation = "https://agelesslinux.org";
+
+    timerConfig = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "24h";
+      Persistent = true;
+    };
+
+    wantedBy = "timers.target";
+
+    enable = false;
+  };
+  ## agelessd timer INCOMPLETE ##
 
 }
 

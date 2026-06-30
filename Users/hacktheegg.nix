@@ -14,8 +14,9 @@
 
       imports = [
         ./Modules/chromium.nix
-        ./Modules/librewolf.nix
         ./Modules/equibop.nix
+        ./Modules/librewolf.nix
+        ./Modules/passwordstore.nix
       ];
 
       programs = {
