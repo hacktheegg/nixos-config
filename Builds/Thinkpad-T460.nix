@@ -56,7 +56,6 @@ in
     lutris
     vlc-bittorrent
     conky
-    element-desktop
 
     protonmail-bridge-gui
 

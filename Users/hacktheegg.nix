@@ -14,6 +14,7 @@
 
       imports = [
         ./Modules/chromium.nix
+        ./Modules/element-desktop.nix
         ./Modules/equibop.nix
         ./Modules/librewolf.nix
         ./Modules/passwordstore.nix
