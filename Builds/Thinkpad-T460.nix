@@ -38,12 +38,9 @@ in
       ./../Modules/copyparty.nix
       ./../Modules/desktop.nix
       ./../Modules/git.nix
-      # ./../Modules/mailserver.nix
-      # ./../Modules/mpd.nix
       ./../Modules/mpv.nix
       ./../Modules/network.nix
-      # ./../Modules/printing.nix
-      # ./../Modules/qbittorrent.nix
+      ./../Modules/polkit.nix
       ./../Modules/qemu.nix
 
       ./../Users/hacktheegg.nix

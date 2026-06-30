@@ -17,6 +17,7 @@
         ./Modules/equibop.nix
         ./Modules/librewolf.nix
         ./Modules/passwordstore.nix
+        ./Modules/polkit-agent.nix
       ];
 
       programs = {

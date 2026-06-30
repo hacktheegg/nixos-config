@@ -178,14 +178,6 @@
   };
 
 
-  systemd.user.services.lxqt-policykit-agent = {
-    description = "LXQt PolicyKit Authentication Agent";
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent";
-      Restart = "on-failure";
-    };
-  };
   #systemd.services.display-manager.serviceConfig.NoNewPrivileges = true;
 
   #security.pam.services.swaylock.text = "auth include login";
@@ -194,8 +186,6 @@
   #   enable = true;
   #   package = pkgs.swaylock; # or pkgs.swaylock-effects
   # };
-
-  security.polkit.enable = true;
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;
