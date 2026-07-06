@@ -63,7 +63,6 @@ in
 
 
     solaar
-    jellyfin-mpv-shim
     picard
     glslang
 
