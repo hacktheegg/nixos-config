@@ -12,7 +12,7 @@
   };
 
   services.pass-secret-service = {
-    enable = true;
+    enable = false;
     storePath = "/home/password-store";
   };
 }

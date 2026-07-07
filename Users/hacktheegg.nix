@@ -17,6 +17,7 @@
         ./Modules/element-desktop.nix
         ./Modules/equibop.nix
         ./Modules/jellyfin-mpv-shim.nix
+        ./Modules/keepassxc.nix
         ./Modules/librewolf.nix
         ./Modules/passwordstore.nix
         ./Modules/polkit-agent.nix
