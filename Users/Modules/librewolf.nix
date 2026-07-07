@@ -28,6 +28,7 @@
           floccus
           indie-wiki-buddy
           ruffle_rs
+          keepassxc-browser
           # Get them yourself
           # UBlock Origin
           # NoScript

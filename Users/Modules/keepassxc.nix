@@ -6,6 +6,9 @@
     enable = true;
     settings = {
       FdoSecrets.Enabled = true;
+      Browser = {
+        AllowExpiredCredentials = true;
+      };
     };
   };
 
