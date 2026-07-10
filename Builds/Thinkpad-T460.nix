@@ -3,17 +3,14 @@
 
 let
 
-  # Move the derivation into a 'let' binding for cleanliness
   wallpaperPkg = pkgs.stdenv.mkDerivation {
     name = "secureblue-wallpapers";
     src = ./../Resources/backgrounds.zip;
     nativeBuildInputs = [ pkgs.unzip ];
 
-    # Use unpackPhase to ensure the zip is actually extracted
-    # or just let the default behavior happen by removing manual phases
     installPhase = ''
-      mkdir -p $out/usr/share/backgrounds/secureblue
-      cp -r . $out/usr/share/backgrounds/secureblue/
+      mkdir -p $out/share
+      cp -r backgrounds $out/share/
     '';
   };
 
