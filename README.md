@@ -72,10 +72,9 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 
 ### TODO:
 
-- [ ] Waydroid networking fix cause it currently doesnt open
 - [ ] Script to quick-setup a dev environment `./Scripts/init.sh`
 - [ ] Auto move tags to indicate version each device is at
-- [ ] Manual (command `man`)
+- [ ] Manual (command `man`) / Tealdeer
 - [ ] Fix Dark Mode to be Fully Uniform
 - [ ] Keyring
 - [ ] Polkit
@@ -83,9 +82,11 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 - [ ] Theming
 - [ ] Look over the XDG standard for paths and figure out what to change
 - [ ] Add ssh key for Minix Neo
-- [ ] Remove FLAKE support (It's already gone)
+- [ ] ~~Remove FLAKE support (It's already gone)~~
+- [ ] Add flake support (I finally understand why)
 - [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server
 - [ ] Finish ageless NixOS setup
+- [x] ~~Waydroid networking fix cause it currently doesnt open~~
 
 
 ## Feedback and Contributing

@@ -16,8 +16,6 @@ in
   ] ++ (
     if deviceName == "Thinkpad-T460" then
       [ ./Builds/Thinkpad-T460.nix ]
-    else if deviceName == "Minix-NEO" then
-      [ ./Builds/Minix_NEO_Z83-4.nix ]
     else if deviceName == "HP-Mini" then
       [ ./Builds/HP-Mini.nix ]
     else ## MARKER ##
@@ -102,6 +100,24 @@ in
     startAt = "daily";
     enable = true;
   };
+
+
+
+    nix.gc = {
+      automatic = true;
+      dates = "monthly";
+      options = "--delete-older-than 32d --quiet";
+      persistent = true;
+      randomizedDelaySec = "3d";
+    };
+    nix.optimise = {
+      automatic = true;
+      dates = "daily";
+      persistent = true;
+      randomizedDelaySec = "240min";
+    };
+    nix.settings.auto-optimise-store = true;
+
 
 
 

@@ -12,8 +12,8 @@ let
     # Use unpackPhase to ensure the zip is actually extracted
     # or just let the default behavior happen by removing manual phases
     installPhase = ''
-      mkdir -p $out/secureblue
-      cp -r . $out/secureblue/
+      mkdir -p $out/share/backgrounds/secureblue
+      cp -r . $out/share/backgrounds/secureblue/
     '';
   };
 
@@ -162,18 +162,6 @@ in
     enable = true;
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d --quiet";
-    persistent = true;
-    randomizedDelaySec = "1d";
-  };
-  nix.optimise = {
-    automatic = true;
-    persistent = true;
-    randomizedDelaySec = "240min";
-  };
 
   zramSwap = {
     enable = true;
@@ -279,8 +267,6 @@ in
       "--exclude='.hist'"
       "--exclude='.local/share/Steam'"
       "--exclude='.local/share/waydroid'"
-      "--exclude='Videos/DRSTONE'"
-      "--exclude='Videos/REZERO'"
     ];
   };
 
