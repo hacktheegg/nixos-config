@@ -12,8 +12,8 @@ let
     # Use unpackPhase to ensure the zip is actually extracted
     # or just let the default behavior happen by removing manual phases
     installPhase = ''
-      mkdir -p $out/share/backgrounds/secureblue
-      cp -r . $out/share/backgrounds/secureblue/
+      mkdir -p $out/usr/share/backgrounds/secureblue
+      cp -r . $out/usr/share/backgrounds/secureblue/
     '';
   };
 
