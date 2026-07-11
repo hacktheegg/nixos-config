@@ -10,7 +10,7 @@ let
 
     installPhase = ''
       mkdir -p $out/share
-      cp -r backgrounds $out/share/
+      cp -r $in/backgrounds $out/share/
     '';
   };
 
