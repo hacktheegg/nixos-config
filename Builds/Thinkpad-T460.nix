@@ -9,7 +9,7 @@ let
     nativeBuildInputs = [ pkgs.unzip ];
 
     installPhase = ''
-      mkdir -p share
+      mkdir -p $out/share
       cp -r . $out/share/
     '';
   };
