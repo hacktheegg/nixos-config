@@ -125,8 +125,6 @@ in
       #unpackPhase = "true";
     #})
 
-    wallpaperPkg
-
     # (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
 
     yt-dlp

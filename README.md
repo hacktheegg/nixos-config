@@ -80,10 +80,12 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 - [ ] Polkit
 - [ ] Port Homeserver from Arch/Docker to NixOS
 - [ ] Theming
+- [ ] Get wallpaper to properly symlinkto `/run/current-system`
 - [ ] Look over the XDG standard for paths and figure out what to change
 - [ ] Add ssh key for Minix Neo
 - [ ] ~~Remove FLAKE support (It's already gone)~~
-- [ ] Add flake support (I finally understand why)
+- [ ] ~~Add flake support (I finally understand why)~~
+- [ ] Ignore FLAKE's enitirely (the new `system.nix` thing looks more my style)
 - [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server
 - [ ] Finish ageless NixOS setup
 - [x] ~~Waydroid networking fix cause it currently doesnt open~~
@@ -91,7 +93,7 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 
 ## Feedback and Contributing
 
-As of typing this, there is no system for feedback or contributions and there is a good chance that there will never be as this is my own personal config for my devices
+Hope and pray that I get a notification on the mirror at github
 
 
 ### Related
