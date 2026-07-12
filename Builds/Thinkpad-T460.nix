@@ -9,8 +9,8 @@ let
     nativeBuildInputs = [ pkgs.unzip ];
 
     installPhase = ''
-      mkdir -p $out/share
-      cp -r $src/backgrounds $out/share/
+      mkdir -p share
+      cp -r . $out/share/
     '';
   };
 
