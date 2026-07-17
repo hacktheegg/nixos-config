@@ -15,18 +15,12 @@ let
   };
 
 
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz";
-
 in
 
 {
   imports =
     [
-      (import "${home-manager}/nixos")
-      "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
-
       ./../Hardware/Thinkpad-T460.nix
-      #<home-manager/nixos>
 
       ./../Containers/i2p.nix
 
@@ -45,6 +39,9 @@ in
     ];
 
   boot.kernelModules = [ "ip_tables" "iptable_nat" "iptable_filter" ];
+
+  networking.hostName = "HP-Mini";
+
 
 
 
@@ -124,8 +121,6 @@ in
       #src = ./../Resources/backgrounds.zip;
       #unpackPhase = "true";
     #})
-
-    # (pkgs.callPackage <agenix/pkgs/agenix.nix> {})
 
     yt-dlp
 

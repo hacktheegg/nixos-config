@@ -72,23 +72,19 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 
 ### TODO:
 
+- [ ] Ignore FLAKE's enitirely (the new `system.nix` thing looks more my style)
 - [ ] Script to quick-setup a dev environment `./Scripts/init.sh`
 - [ ] Auto move tags to indicate version each device is at
-- [ ] Manual (command `man`) / Tealdeer
-- [ ] Fix Dark Mode to be Fully Uniform
-- [ ] Keyring
-- [ ] Polkit
 - [ ] Port Homeserver from Arch/Docker to NixOS
-- [ ] Theming
-- [ ] Get wallpaper to properly symlinkto `/run/current-system`
+- [ ] Polkit
+- [ ] Keyring (keepassxc)
 - [ ] Look over the XDG standard for paths and figure out what to change
-- [ ] Add ssh key for Minix Neo
-- [ ] ~~Remove FLAKE support (It's already gone)~~
-- [ ] ~~Add flake support (I finally understand why)~~
-- [ ] Ignore FLAKE's enitirely (the new `system.nix` thing looks more my style)
-- [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server
 - [ ] Finish ageless NixOS setup
-- [x] ~~Waydroid networking fix cause it currently doesnt open~~
+- [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server
+- [ ] Fix Dark Mode to be Fully Uniform
+- [ ] Get wallpaper to properly symlinkto `/run/current-system`
+- [ ] Theming
+- [ ] Manual (command `man`) / Tealdeer
 
 
 ## Feedback and Contributing

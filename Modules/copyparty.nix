@@ -1,22 +1,7 @@
 { config, ... }:
 
-let
-
-  copyparty = fetchTarball "https://github.com/9001/copyparty/archive/hovudstraum.tar.gz";
-
-in
 
 {
-
-  imports = [
-#     <agenix/modules/age.nix>
-    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
-    "${copyparty}/contrib/nixos/modules/copyparty.nix"
-  ];
-
-  nixpkgs.overlays = [
-    (import "${copyparty}/contrib/package/nix/overlay.nix")
-  ];
 
   age.secrets.copyparty-hacktheegg =  {
     file = ./../Secrets/copyparty-hacktheegg.age;

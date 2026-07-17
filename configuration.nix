@@ -2,25 +2,24 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, config, /*deviceName ? lib.strings.removeSuffix "\n" (builtins.readFile ./Configs/hostname),*/ ... }:
+{ lib, pkgs, config, ... }:
 
-let
-  deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile ./Configs/hostname );
-in
+# let
+#   deviceName = lib.strings.removeSuffix "\n" ( builtins.readFile ./Configs/hostname );
+# in
 {
 
-  networking.hostName = deviceName;
+#   networking.hostName = deviceName;
 
-  imports = [
-    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
-  ] ++ (
-    if deviceName == "Thinkpad-T460" then
-      [ ./Builds/Thinkpad-T460.nix ]
-    else if deviceName == "HP-Mini" then
-      [ ./Builds/HP-Mini.nix ]
-    else ## MARKER ##
-      throw "Device Hostname Missing or Unidentified, Please Configure"
-  );
+#   imports = [
+#   ] ++ (
+#     if deviceName == "Thinkpad-T460" then
+#       [ ./Builds/Thinkpad-T460.nix ]
+#     else if deviceName == "HP-Mini" then
+#       [ ./Builds/HP-Mini.nix ]
+#     else ## MARKER ##
+#       throw "Device Hostname Missing or Unidentified, Please Configure"
+#   );
 
 
   environment.systemPackages = with pkgs; [
@@ -41,6 +40,8 @@ in
     neocmakelsp
     nil
     vscode-json-languageserver
+
+    indent
   ];
 
   i18n.defaultLocale = "en_AU.UTF-8";

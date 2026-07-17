@@ -53,7 +53,7 @@ TARGET_DIR="/etc/nixos"
 
 if [ "$SKIP_VALIDATION" = false ]; then
 	echo "-- Validating Config --"
-	nix-instantiate --readonly-mode --eval -E "(import <nixpkgs/nixos> { configuration = \"${SOURCE_DIR}/configuration.nix\"; }).config.system.build.toplevel.drvPath" -I nixos-config="${SOURCE_DIR}/configuration.nix"
+	nixos-rebuild build --file ./system.nix --attr Thinkpad-T460
 else
     echo "-- Skipping Validation --"
 fi

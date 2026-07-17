@@ -1,18 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, nur, ... }:
 
 {
 
-  nixpkgs.config = {
-#     permittedInsecurePackages = [
-#       "librewolf-151.0.2-1"
-#       "librewolf-unwrapped-151.0.2-1"
-#     ];
-    packageOverrides = pkgs: {
-      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
-        inherit pkgs;
-      };
-    };
-  };
+#   nixpkgs.config = {
+# #     permittedInsecurePackages = [
+# #       "librewolf-151.0.2-1"
+# #       "librewolf-unwrapped-151.0.2-1"
+# #     ];
+#     packageOverrides = pkgs: {
+#       nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
+#         inherit pkgs;
+#       };
+#     };
+#   };
 
 
 
@@ -22,7 +22,7 @@
       "Original" = {
         isDefault = true;
         id = 0;
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with nur.repos.rycee.firefox-addons; [
           ublock-origin
           noscript
           floccus
@@ -61,7 +61,7 @@
       "I2P" = {
         isDefault = false;
         id = 1;
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with nur.repos.rycee.firefox-addons; [
           ublock-origin
           noscript
           # Get them yourself
