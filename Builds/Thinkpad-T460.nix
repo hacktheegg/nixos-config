@@ -14,6 +14,8 @@
 
   omelette.boot.efi.enable = true;
 
+  omelette.containers.media.enable = false;
+
 #   omelette.networks.bridges = {
 #     custom = {
 #       name = "br-custom";
