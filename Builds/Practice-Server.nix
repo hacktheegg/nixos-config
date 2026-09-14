@@ -1,15 +1,15 @@
 { pkgs, config, ... }:
 
-let
-  ntfyLogin = pkgs.writeShellScript "ntfy-ssh-login" ''
-    (
-      ${pkgs.curl}/bin/curl -fsS \
-        -H "Title: SSH login" \
-        -d "SSH login: user=$PAM_USER host=$(hostname) from=$PAM_RHOST" \
-        https://ntfy.example.com/device-logins
-    ) &
-  '';
-in
+# let
+#   ntfyLogin = pkgs.writeShellScript "ntfy-ssh-login" ''
+#     (
+#       ${pkgs.curl}/bin/curl -fsS \
+#         -H "Title: SSH login" \
+#         -d "SSH login: user=$PAM_USER host=$(hostname) from=$PAM_RHOST" \
+#         https://ntfy.example.com/device-logins
+#     ) &
+#   '';
+# in
 {
   imports = [
     ./../Hardware/Practice-Server.nix
@@ -54,12 +54,12 @@ in
       behind-proxy = true;
     };
   };
-  security.pam.services.sshd.rules.session.ntfy-login = {
-    order = 1500;
-    control = "optional";
-    modulePath = "${pkgs.pam_exec}/lib/security/pam_exec.so";
-    args = "${ntfyLogin}";
-  };
+#   security.pam.services.sshd.rules.session.ntfy-login = {
+#     order = 1500;
+#     control = "optional";
+#     modulePath = "${pkgs.pam_exec}/lib/security/pam_exec.so";
+#     args = "${ntfyLogin}";
+#   };
 
 
 
