@@ -8,7 +8,7 @@ in
   options.omelette.containers.qbittorrent = {
     enable = lib.mkEnableOption "Qbittorrent Container";
     profileDir = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
+      type = lib.types.str;
 #       default = false;
       example = "/var/lib/qBittorrent";
       description = "Qbittorrent Profile Directory";
