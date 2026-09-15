@@ -23,23 +23,57 @@
 
   age.secrets.tunnel-token-practice-server.file = ../Secrets/Tunnel-Token-Practice-Server.age;
 
-  omelette.containers.jellyfin = {
-    enable = true;
-    cacheDir = "/cache/jellyfin/cache";
-    configDir = "/cache/jellyfin/config";
-    dataDir = "/cache/jellyfin/data";
-    mounts = [
-      "/media/static/jellyfin/Anime"
-      "/media/static/jellyfin/Movies"
-      "/media/static/jellyfin/Music"
-      "/media/static/jellyfin/Shows"
-    ];
-  };
-  omelette.containers.reverse-proxy = {
-    enable = true;
-    cloudflared = {
-      enable = true;
-      token = config.age.secrets.tunnel-token-practice-server.path;
+  omelette = {
+    containers = {
+      jellyfin = {
+        enable = true;
+        cacheDir = "/cache/jellyfin/cache";
+        configDir = "/cache/jellyfin/config";
+        dataDir = "/cache/jellyfin/data";
+        mounts = [
+          "/media/static/jellyfin/Anime"
+          "/media/static/jellyfin/Movies"
+          "/media/static/jellyfin/Music"
+          "/media/static/jellyfin/Shows"
+        ];
+      };
+      media = {
+        enable = true;
+        mounts = [
+          "/cache/qbittorrent/incomplete"
+          "/media/static"
+        ];
+        radarr = {
+          enable = true;
+          dataDir = "/cache/servarr/radarr/data";
+          webPort = 7878;
+        };
+        sonarr = {
+          enable = true;
+          dataDir = "/cache/servarr/sonarr/data";
+          webPort = 8989;
+        };
+        lidarr = {
+          enable = true;
+          dataDir = "/cache/servarr/lidarr/data";
+          webPort = 8686;
+        };
+      };
+      reverse-proxy = {
+        enable = true;
+        cloudflared = {
+          enable = true;
+          token = config.age.secrets.tunnel-token-practice-server.path;
+        };
+      };
+      qbittorrent = {
+        enable = true;
+        profileDir = "/cache/qbittorrent/profileDir";
+        mounts = [
+          "/media/static/qbittorrent"
+        ];
+        webPort = 1284;
+      };
     };
   };
 
