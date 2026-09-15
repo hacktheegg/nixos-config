@@ -106,19 +106,19 @@ in
             enable = true;
             dataDir = "${servarrData}/radarr/data";
             openFirewall = true;
-            settings.port = cfg.radarr.webPort;
+            settings.server.port = cfg.radarr.webPort;
           };
           sonarr = lib.mkIf cfg.sonarr.enable {
             enable = true;
             dataDir = "${servarrData}/sonarr/data";
             openFirewall = true;
-            settings.port = cfg.sonarr.webPort;
+            settings.server.port = cfg.sonarr.webPort;
           };
           lidarr = lib.mkIf cfg.lidarr.enable {
             enable = true;
             dataDir = "${servarrData}/lidarr/data";
             openFirewall = true;
-            settings.port = cfg.lidarr.webPort;
+            settings.server.port = cfg.lidarr.webPort;
           };
         };
       };
