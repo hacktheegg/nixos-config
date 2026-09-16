@@ -40,7 +40,6 @@
       media = {
         enable = true;
         mounts = [
-          "/cache/qbittorrent/incomplete"
           "/media/static"
         ];
         radarr = {
@@ -71,6 +70,7 @@
         profileDir = "/cache/qbittorrent/profileDir";
         mounts = [
           "/media/static/qbittorrent"
+          "/cache/qbittorrent/incomplete"
         ];
         webPort = 1284;
       };
