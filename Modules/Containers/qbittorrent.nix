@@ -54,7 +54,7 @@ in
         services = {
           qbittorrent = {
             enable = true;
-            profileDir = cfg.profileDir;
+            profileDir = "${mountpoint}/profile";
             openFirewall = true;
             webuiPort = cfg.webPort;
           };
