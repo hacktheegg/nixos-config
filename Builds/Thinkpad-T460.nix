@@ -112,8 +112,6 @@
     sqlite
 
     alacritty
-
-    sl
   ];
 
   services.openssh = {

@@ -15,8 +15,11 @@
     vim
     nmap
     git
+
+    # Script Dependencies
     fzf
     jq
+    screen
 
     # Language Servers
     bash-language-server
