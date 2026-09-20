@@ -247,11 +247,11 @@
 
 
 
-  age.secrets.copyparty-pass = {
-    file = ./../Secrets/test-secret.age;
-    owner = "hacktheegg";
-    group = "users";
-  };
+#   age.secrets.copyparty-pass = {
+#     file = ./../Secrets/test-secret.age;
+#     owner = "hacktheegg";
+#     group = "users";
+#   };
 
 
   networking.firewall.allowedTCPPorts = [ 3923 ];
@@ -275,7 +275,7 @@
       #];
 
       #accounts.hacktheegg.passwordFile = "/etc/nixos/Resources/copypartyPass";
-      accounts.hacktheegg.passwordFile = config.age.secrets.copyparty-pass.path;
+      accounts.hacktheegg.passwordFile = ./../Secrets/copyparty-pass.txt;
 
 
       volumes."/" = {
