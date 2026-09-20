@@ -99,7 +99,7 @@
 
       if [ GIT_REVISION_LOCAL != GIT_REVISION_REMOTE ] ; then
         echo "commits don\'t match up"
-        ntfy pub -u "$NTFY_CREDS" ntfy-old.hacktheegg.cc/alerts "$({pkgs.hostname}/bin/hostname) is Out of Date"
+        ntfy pub -u "$NTFY_USER" ntfy-old.hacktheegg.cc/alerts "$({pkgs.hostname}/bin/hostname) is Out of Date"
       else
         echo "no update needed"
       fi
