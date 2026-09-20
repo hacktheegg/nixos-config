@@ -217,21 +217,6 @@
     };
   };
 
-  age.secrets.tunnel-cloudflare-server.file = ./../Secrets/tunnel-cloudflare-server.age;
-
-  services.cloudflared = {
-    enable = true;
-    tunnels = {
-      "77fa5c8f-bf8c-4102-8d4a-a73a6936fd18" = {
-        credentialsFile = config.age.secrets.tunnel-cloudflare-server.path;
-        ingress = {
-          "ssh-practice-server.hacktheegg.cc" = "ssh://localhost:22";
-        };
-
-        default = "http_status:404";
-      };
-    };
-  };
 
 
 #   services.openssh = {
