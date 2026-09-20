@@ -58,6 +58,56 @@
 
 
 
+  age.secrets.ntfy-creds = {
+    file = ./Secrets/ntfy-creds.age;
+    owner = "nobody";
+    mode = "0400";
+  };
+  # contents in format below #
+  #--------------------------#
+  # user:pass&word           #
+  #--------------------------#
+  # contents in format above #
+
+  systemd.services.update-alert = {
+    description = "Periodically Alert NTFY When Device is Behind in Version.";
+    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy-sh pkgs._9base pkgs.hostname ];
+
+    enable = true;
+    startAt = "daily";
+
+
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      Restart = "on-failure";
+      RestartSec = "5s";
+      WorkingDirectory = "/etc/nixos";
+      User = "nobody";
+    };
+
+    script = ''
+      set -eu
+
+      GIT_REVISION_LOCAL="$(git -c safe.directory=/etc/nixos rev-parse HEAD)"
+      GIT_REVISION_REMOTE="$(git ls-remote https://git.hacktheegg.cc/hacktheegg/nixos-config.git HEAD | cut -f1)"
+
+      NTFY_USER="$(cat ${config.age.secrets.ntfy-creds.path})"
+
+      if [ GIT_REVISION_LOCAL != GIT_REVISION_REMOTE ] ; then
+        echo "commits don\'t match up"
+        ntfy pub ntfy-old.hacktheegg.cc/alerts "$({pkgs.hostname}/bin/hostname) is Out of Date"
+      else
+        echo "no update needed"
+      fi
+    '';
+  };
+
+
+
   nix.settings.experimental-features = [ "nix-command" ];
   nix.gc = {
     automatic = true;

@@ -11,4 +11,10 @@ in
     practice-server
   ];
 
+  "./Secrets/ntfy-creds.age".publicKeys = [
+    host
+    recovery
+    practice-server
+  ];
+
 }
