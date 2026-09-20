@@ -63,11 +63,11 @@
     owner = "nobody";
     mode = "0400";
   };
-  # contents in format below #
-  #--------------------------#
-  # user:pass&word           #
-  #--------------------------#
-  # contents in format above #
+  age.secrets.ntfy-url = {
+    file = ./Secrets/ntfy-url.age;
+    owner = "nobody";
+    mode = "0400";
+  };
 
   systemd.services.update-alert = {
     description = "Periodically Alert NTFY When Device is Behind in Version.";
@@ -96,10 +96,11 @@
       GIT_REVISION_REMOTE="$(git ls-remote https://git.hacktheegg.cc/hacktheegg/nixos-config.git HEAD | cut -f1)"
 
       NTFY_USER="$(cat ${config.age.secrets.ntfy-creds.path})"
+      NTFY_URL="$(cat ${config.age.secrets.ntfy-url.path})"
 
       if [ GIT_REVISION_LOCAL != GIT_REVISION_REMOTE ] ; then
         echo "commits don\'t match up"
-        ntfy pub -u "$NTFY_USER" ntfy-old.hacktheegg.cc/alerts "$(${pkgs.hostname}/bin/hostname) is Out of Date"
+        ntfy pub -u "$NTFY_USER" "$NTFY_URL/alerts" "$(${pkgs.hostname}/bin/hostname) is Out of Date"
       else
         echo "no update needed"
       fi
