@@ -275,7 +275,7 @@
       #];
 
       #accounts.hacktheegg.passwordFile = "/etc/nixos/Resources/copypartyPass";
-      accounts.hacktheegg.passwordFile = ./../Secrets/copyparty-pass.txt;
+      accounts.hacktheegg.passwordFile = "etc/nixos/Secrets/copyparty-pass.txt";
 
 
       volumes."/" = {
