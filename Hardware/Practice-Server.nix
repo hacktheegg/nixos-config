@@ -16,13 +16,19 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/dabb5f8f-3cba-4bf1-8249-d09aa0aecd39";
       fsType = "btrfs";
-      options = [ "subvol=root" "noatime" ];
+      options = [ "subvol=@" "noatime" ];
     };
 
   fileSystems."/nix" =
     { device = "/dev/disk/by-uuid/dabb5f8f-3cba-4bf1-8249-d09aa0aecd39";
       fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      options = [ "subvol=@store" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/etc/nixos" =
+    { device = "/dev/disk/by-uuid/dabb5f8f-3cba-4bf1-8249-d09aa0aecd39";
+      fsType = "btrfs";
+      options = [ "subvol=@nixos" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/.snapshots" =
