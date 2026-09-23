@@ -91,6 +91,14 @@
     hostAddress = "192.168.100.1";
     localAddress = "192.168.100.2";
 
+    # Bind-mount the root runtime directory so Waypipe sockets are accessible inside
+    bindMounts = {
+      "/run/user/0" = {
+        hostPath = "/run/user/0";
+        isReadOnly = false;
+      };
+    };
+
     # Use direct bind or let it generate cleanly from local channel
     ephemeral = true;
 
