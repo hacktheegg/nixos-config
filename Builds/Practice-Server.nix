@@ -91,6 +91,9 @@
     hostAddress = "192.168.100.1";
     localAddress = "192.168.100.2";
 
+    # Use direct bind or let it generate cleanly from local channel
+    ephemeral = true;
+
     config = { config, pkgs, ... }: {
       system.stateVersion = "26.05"; # Match your system version
 
