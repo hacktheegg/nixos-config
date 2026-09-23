@@ -21,6 +21,12 @@
 
   omelette.boot.efi.enable = true;
 
+  /*
+    * 10% Music
+    * 45% Movies
+    * 45% Shows
+  */
+
   age.secrets.tunnel-token-practice-server.file = ../Secrets/Tunnel-Token-Practice-Server.age;
 
   omelette = {
@@ -74,6 +80,32 @@
         ];
         webPort = 1284;
       };
+    };
+  };
+
+
+  # Define the container
+  containers.discord-box = {
+    autoStart = false; # Ensures it is strictly "on-demand"
+    privateNetwork = true;
+    hostAddress = "192.168.100.1";
+    localAddress = "192.168.100.2";
+
+    config = { config, pkgs, ... }: {
+      system.stateVersion = "26.05"; # Match your system version
+
+      # Enable non-free packages if using Discord
+      nixpkgs.config.allowUnfree = true;
+
+      # Install Discord and Cage (Wayland kiosk compositor)
+      environment.systemPackages = with pkgs; [
+        discord
+        cage
+        waypipe
+      ];
+
+      # Allow local graphical rendering socket mapping
+      security.polkit.enable = true;
     };
   };
 
