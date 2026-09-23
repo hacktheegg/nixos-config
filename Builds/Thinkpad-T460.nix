@@ -16,6 +16,10 @@
 
   omelette.containers.media.enable = false;
 
+
+  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enableQt5Integration = true;
+
 #   omelette.networks.bridges = {
 #     custom = {
 #       name = "br-custom";
