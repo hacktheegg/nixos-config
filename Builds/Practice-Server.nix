@@ -216,6 +216,7 @@
     mpv
     wiremix
     cgminer
+    waypipe
   ];
 
 
