@@ -84,39 +84,47 @@
   };
 
 
-  # Define the container
-  containers.discord-box = {
-    autoStart = false; # Ensures it is strictly "on-demand"
-    privateNetwork = true;
-    hostAddress = "192.168.100.1";
-    localAddress = "192.168.100.2";
-
-    # Bind-mount the root runtime directory so Waypipe sockets are accessible inside
-    bindMounts = {
-      "/run/user/0" = {
-        hostPath = "/run/user/0";
-        isReadOnly = false;
-      };
-    };
-
-    # Use direct bind or let it generate cleanly from local channel
-    ephemeral = true;
+  containers.weston-desktop = {
+    autoStart = false;
 
     config = { config, pkgs, ... }: {
-      system.stateVersion = "26.05"; # Match your system version
+      system.stateVersion = "25.11";
 
-      # Enable non-free packages if using Discord
+      users.users.weston = {
+        isSystemUser = true;
+        group = "weston";
+        home = "/var/lib/weston";
+        createHome = true;
+      };
+
+      users.groups.weston = {};
+
+
       nixpkgs.config.allowUnfree = true;
 
-      # Install Discord and Cage (Wayland kiosk compositor)
       environment.systemPackages = with pkgs; [
-        discord
-        cage
-        waypipe
+        weston
+        alacritty
+        foot
       ];
 
-      # Allow local graphical rendering socket mapping
-      security.polkit.enable = true;
+      systemd.services.weston-rdp = {
+        description = "Run Weston in RDP mode.";
+
+        enable = true;
+
+        wantedBy = [ "multi-user.target" ];
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+
+        serviceConfig = {
+          Restart = "on-failure";
+          RestartSec = "5s";
+          User = "weston";
+          Group = "weston";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp";
+        };
+      };
     };
   };
 
