@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 # let
 #   ntfyLogin = pkgs.writeShellScript "ntfy-ssh-login" ''
@@ -96,7 +96,8 @@
         };
       };
 
-    config = { config, pkgs, ... }: {
+    config = { config, pkgs, agenix, ... }: {
+      imports = [ "${agenix}/modules/age.nix" ];
       system.stateVersion = "25.11";
 
       users.users.weston = {
