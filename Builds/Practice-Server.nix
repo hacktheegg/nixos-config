@@ -106,7 +106,7 @@
       system.stateVersion = "25.11";
 
       users.users.weston = {
-        isSystemUser = true;
+        isNormalUser = true;
         group = "weston";
         home = "/var/lib/weston";
         createHome = true;
@@ -131,6 +131,10 @@
         wantedBy = [ "multi-user.target" ];
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
+
+        Environment = [
+          "XDG_RUNTIME_DIR=/run/user/$(id -u weston)"
+        ];
 
         serviceConfig = {
           Restart = "on-failure";
@@ -266,7 +270,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3G3MXV0lULAAMHHR5vj8rOD+9mc/jAuvbbKOQ/jTrH agenix recovery"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+cXDNU7PAa7gxV+1iZ2+agsxEE2T9FAIOHjwrIvx+9 trmwdc@gmail.com"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ObBl3+9+6RsvhLo0SvBwZISP8MZ7I4VDBKIE+Se18 marley@marley-laptop-mint"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE+WPY9B4z8mRavi7xNMPiV++SZVKHzlnBxoSuggA1UN nedaa@Computer"
+#         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE+WPY9B4z8mRavi7xNMPiV++SZVKHzlnBxoSuggA1UN nedaa@Computer"
       ];
       initialPassword = "abc";
     };
