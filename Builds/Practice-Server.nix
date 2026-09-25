@@ -137,7 +137,7 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=/run/agenix/weston-desktop-tls-key --rdp-tls-key=/run/agenix/weston-desktop-tls-key";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-cert=/run/agenix/weston-desktop-tls-cert --rdp-tls-key=/run/agenix/weston-desktop-tls-key";
         };
       };
     };

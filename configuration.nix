@@ -77,7 +77,6 @@
     startAt = "daily";
 
 
-    wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
 
@@ -104,7 +103,7 @@
       NTFY_USER="$(cat ${config.age.secrets.ntfy-creds.path})"
       NTFY_URL="$(cat ${config.age.secrets.ntfy-url.path})"
 
-      if [ GIT_REVISION_LOCAL != GIT_REVISION_REMOTE ] ; then
+      if [ "$GIT_REVISION_LOCAL" != "$GIT_REVISION_REMOTE" ] ; then
         echo "commits don\'t match up"
         ntfy pub -u "$NTFY_USER" "$NTFY_URL/alerts" "$(${pkgs.hostname}/bin/hostname) is Out of Date"
       else
