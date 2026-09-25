@@ -138,9 +138,9 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          Environment = [
-            "XDG_RUNTIME_DIR=/run/user/$(id -u weston)"
-          ];
+          RuntimeDirectory = "weston";
+          RuntimeDirectoryMode = "0700";
+          Environment = "XDG_RUNTIME_DIR=/run/weston";
           ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-cert=/run/agenix/weston-desktop-tls-cert --rdp-tls-key=/run/agenix/weston-desktop-tls-key";
         };
       };
