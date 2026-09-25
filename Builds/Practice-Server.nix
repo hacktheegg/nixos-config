@@ -91,13 +91,13 @@
     autoStart = false;
 
     bindMounts = {
-        "${config.age.secrets.weston-desktop-tls.path}" = {
+      "/run/agenix/weston-desktop-tls" = {
+          hostPath = config.age.secrets.weston-desktop-tls.path;
           isReadOnly = true;
         };
       };
 
-    config = { config, pkgs, age, ... }: {
-      imports = [ "${age}/modules/age.nix" ];
+    config = { config, pkgs, ... }: {
       system.stateVersion = "25.11";
 
       users.users.weston = {
@@ -132,7 +132,7 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=${config.age.secrets.weston-desktop-tls.path}";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=/run/agenix/weston-desktop-tls";
         };
       };
     };
