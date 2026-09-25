@@ -96,8 +96,8 @@
         };
       };
 
-    config = { config, pkgs, agenix, ... }: {
-      imports = [ "${agenix}/modules/age.nix" ];
+    config = { config, pkgs, age, ... }: {
+      imports = [ "${age}/modules/age.nix" ];
       system.stateVersion = "25.11";
 
       users.users.weston = {
