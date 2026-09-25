@@ -132,15 +132,15 @@
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
 
-        Environment = [
-          "XDG_RUNTIME_DIR=/run/user/$(id -u weston)"
-        ];
 
         serviceConfig = {
           Restart = "on-failure";
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
+          Environment = [
+            "XDG_RUNTIME_DIR=/run/user/$(id -u weston)"
+          ];
           ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-cert=/run/agenix/weston-desktop-tls-cert --rdp-tls-key=/run/agenix/weston-desktop-tls-key";
         };
       };
