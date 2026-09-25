@@ -85,17 +85,22 @@
 
 
 
-  age.secrets.weston-desktop-tls.file = ../Secrets/weston-desktop-tls.age;
+  age.secrets.weston-desktop-tls-cert.file = ../Secrets/weston-desktop-tls-cert.age;
+  age.secrets.weston-desktop-tls-key.file = ../Secrets/weston-desktop-tls-key.age;
 
   containers.weston-desktop = {
     autoStart = false;
 
     bindMounts = {
-      "/run/agenix/weston-desktop-tls" = {
-          hostPath = config.age.secrets.weston-desktop-tls.path;
+      "/run/agenix/weston-desktop-tls-cert" = {
+          hostPath = config.age.secrets.weston-desktop-tls-cert.path;
           isReadOnly = true;
         };
+      "/run/agenix/weston-desktop-tls-key" = {
+        hostPath = config.age.secrets.weston-desktop-tls-key.path;
+        isReadOnly = true;
       };
+    };
 
     config = { config, pkgs, ... }: {
       system.stateVersion = "25.11";
@@ -132,7 +137,7 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=/run/agenix/weston-desktop-tls";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=/run/agenix/weston-desktop-tls-key --rdp-tls-key=/run/agenix/weston-desktop-tls-key";
         };
       };
     };

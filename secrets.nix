@@ -10,7 +10,12 @@ in
     practice-server
   ];
 
-  "./Secrets/weston-desktop-tls.age".publicKeys = [
+  "./Secrets/weston-desktop-tls-key.age".publicKeys = [
+    recovery
+    practice-server
+  ];
+
+  "./Secrets/weston-desktop-tls-cert.age".publicKeys = [
     recovery
     practice-server
   ];
