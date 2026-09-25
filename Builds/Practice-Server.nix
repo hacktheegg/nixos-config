@@ -132,7 +132,7 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=\"/run/weston-tls.key\"";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=/run/weston-tls.key";
         };
       };
     };
