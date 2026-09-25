@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 # let
 #   ntfyLogin = pkgs.writeShellScript "ntfy-ssh-login" ''
