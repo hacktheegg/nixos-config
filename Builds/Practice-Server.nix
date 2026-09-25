@@ -92,7 +92,6 @@
 
     bindMounts = {
         "${config.age.secrets.weston-desktop-tls.path}" = {
-          hostPath = "/run/weston-tls.key";
           isReadOnly = true;
         };
       };
@@ -132,7 +131,7 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=/run/weston-tls.key";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=${config.age.secrets.weston-desktop-tls.path}";
         };
       };
     };
