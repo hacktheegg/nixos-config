@@ -84,8 +84,18 @@
   };
 
 
+
+  age.secrets.weston-desktop-tls.file = ../Secrets/weston-desktop-tls.age;
+
   containers.weston-desktop = {
     autoStart = false;
+
+    bindMounts = {
+        "${config.age.secrets.weston-desktop-tls.path}" = {
+          hostPath = config.age.secrets.weston-desktop-tls.path;
+          isReadOnly = true;
+        };
+      };
 
     config = { config, pkgs, ... }: {
       system.stateVersion = "25.11";
@@ -122,7 +132,7 @@
           RestartSec = "5s";
           User = "weston";
           Group = "weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp";
+          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-key=\"${config.age.secrets.weston-desktop-tls.path}\"";
         };
       };
     };

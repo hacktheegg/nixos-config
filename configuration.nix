@@ -92,6 +92,12 @@
     script = ''
       set -eu
 
+      sleep 60
+      sleep 60
+      sleep 60
+      sleep 60
+      sleep 60
+
       GIT_REVISION_LOCAL="$(git -c safe.directory=/etc/nixos rev-parse HEAD)"
       GIT_REVISION_REMOTE="$(git ls-remote https://git.hacktheegg.cc/hacktheegg/nixos-config.git HEAD | cut -f1)"
 

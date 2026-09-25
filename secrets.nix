@@ -10,6 +10,11 @@ in
     practice-server
   ];
 
+  "./Secrets/weston-desktop-tls.age".publicKeys = [
+    recovery
+    practice-server
+  ];
+
   "./Secrets/ntfy-creds.age".publicKeys = [
     host
     recovery
