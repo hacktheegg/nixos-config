@@ -60,5 +60,5 @@ in
 {
   Thinkpad-T460 = mkSystem "Thinkpad-T460";
   Practice-Server = mkSystem "Practice-Server";
-  HP-Win7 = mkSystem "HP-Win7";
+  Pavilion-dv7-Notebook = mksystem "Pavilion-dv7-Notebook";
 }
