@@ -119,7 +119,7 @@ else
 fi
 
 if [[ -z "$NIX_ATTRIBUTE" ]] ; then
-    NIX_ATTRIBUTE=$( nix eval --impure --json --expr "builtins.attrNames (import ${NIX_CONFIG_PATH} {})" | jq -r '.[]' | fzf )
+    NIX_ATTRIBUTE=$( nix eval --extra-experimental-features nix-command --impure --json --expr "builtins.attrNames (import ${NIX_CONFIG_PATH} {})" | jq -r '.[]' | fzf )
     [[ -n "$NIX_ATTRIBUTE" ]] || exit 0
 fi
 
