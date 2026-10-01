@@ -59,6 +59,6 @@ let
 in
 {
   Thinkpad-T460 = mkSystem "Thinkpad-T460";
-  Practice-Server = mkSystem "Practice-Server";
+  IdeaPad-L3 = mkSystem "IdeaPad L3";
   Pavilion-dv7-Notebook = mkSystem "Pavilion-dv7-Notebook";
 }

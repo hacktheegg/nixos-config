@@ -66,18 +66,12 @@ From here your entries in `./Builds/` is what controls each device, allowing for
 
 ### TODO:
 
-- [ ] Port Homeserver from Arch/Docker to NixOS
-- [ ] Script to quick-setup a dev environment `./Scripts/init.sh`
-- [ ] Ignore FLAKE's enitirely (the new `system.nix` thing looks more my style)
-- [ ] Auto move tags to indicate version each device is at
-- [ ] Polkit
-- [ ] Keyring (keepassxc)
-- [ ] Look over the XDG standard for paths and figure out what to change
-- [ ] Finish ageless NixOS setup
+- [ ] Port Homeserver from Arch/Docker to NixOS (PRIORITY: HIGH)
+- [ ] Script to quick-setup a dev environment `./Scripts/init.sh` (PRIORITY: MEDIUM)
 - [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server
+- [ ] Finish ageless NixOS setup
 - [ ] Fix Dark Mode to be Fully Uniform
 - [ ] Get wallpaper to properly symlink to `/run/current-system`
-- [ ] Theming
 - [ ] Manual (command `man`) / Tealdeer
 
 
@@ -92,3 +86,4 @@ Hope and pray that I get a notification on the mirror at github
 - Tab Completion Guide: https://tldp.org/LDP/abs/html/tabexpansion.html
 - Ageless Linux `./Modules/ageless-linux.nix` Source: https://agelesslinux.github.io/age-reporting/distro-specific.html
 - Keyring Setup Guide: https://wiki.nixos.org/wiki/Secret_Service#pass-secret-service
+- BIOS/MBR Boot Help: https://github.com/Linuxury/nixos-config/blob/main/docs/04-install-legacy-bios.md

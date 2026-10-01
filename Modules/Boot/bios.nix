@@ -7,11 +7,17 @@
       example = true;
       description = "Enable BIOS boot method.";
     };
+    device = lib.mkOption {
+      type = lib.types.str;
+#       default = false;
+      example = "/dev/sda";
+      description = "Device to install GRUB bootloader onto.";
+    };
   };
   config = lib.mkIf config.omelette.boot.bios.enable {
     boot.loader = {
       grub = {
-        device = throw "YOUR DEVICE IS USING BIOS BOOT, SO CHECK YOURSELF WHAT NEEDS TO BE DONE IN ./Modules/bootloader-bios.nix";
+        device = config.omelette.boot.bios.device;
         enable = true;
       };
       systemd-boot.enable = false;

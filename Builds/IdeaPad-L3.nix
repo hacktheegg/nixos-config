@@ -229,7 +229,7 @@
 
 
 
-  networking.hostName = "Practice-Server"; # Define your hostname.
+  networking.hostName = "IdeaPad-L3"; # Define your hostname.
   networking.networkmanager.enable = true;
 
 
