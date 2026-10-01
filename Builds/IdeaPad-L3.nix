@@ -12,7 +12,7 @@
 # in
 {
   imports = [
-    ./../Hardware/Practice-Server.nix
+    ./../Hardware/IdeaPad-L3.nix
 
 #     ./../Users/hacktheegg.nix
 
