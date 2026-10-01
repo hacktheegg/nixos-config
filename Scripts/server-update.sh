@@ -13,5 +13,5 @@ cd $SCRIPT_DIR
 git fetch origin
 git push origin
 
-ssh -t -i ~/agenix-recovery -p 32991 hacktheegg@157.211.242.19 "cd /home/hacktheegg/NEW && git fetch origin && git pull origin && /home/hacktheegg/NEW/rebuild.sh --config-path /home/hacktheegg/NEW/system.nix --attribute Practice-Server --mode switch"
+ssh -t -i ~/agenix-recovery -p 32991 hacktheegg@157.211.242.19 "cd /home/hacktheegg/NEW && git fetch origin && git pull origin && /home/hacktheegg/NEW/rebuild.sh --config-path /home/hacktheegg/NEW/system.nix --attribute IdeaPad-L3 --mode switch"
 
