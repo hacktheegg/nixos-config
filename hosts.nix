@@ -1,5 +1,5 @@
 {
-    Thinkpad-T460 = ./Builds/Thinkpad-T460.nix;
-    IdeaPad-L3 = ./Builds/IdeaPad-L3.nix;
-    Pavilion-dv7-Notebook = ./Builds/Pavilion-dv7-Notebook.nix;
+    Thinkpad-T460 = ./Hosts/Thinkpad-T460;
+    IdeaPad-L3 = ./Hosts/IdeaPad-L3;
+    Pavilion-dv7-Notebook = ./Hosts/Pavilion-dv7-Notebook;
 }

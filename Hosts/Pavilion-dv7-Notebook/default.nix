@@ -5,10 +5,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ../Hardware/Pavilion-dv7-Notebook.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+
+    ./../../Modules
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;

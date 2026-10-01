@@ -11,6 +11,9 @@ VAR_FORCE_BOOT_BIOS=""
 VAR_FORCE_BOOT_UEFI=""
 
 
+# hostnamectl
+# cat /sys/firmware/efi/fw_platform_size
+
 
 
 show_help() {

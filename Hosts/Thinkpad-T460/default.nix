@@ -1,13 +1,11 @@
 { pkgs, config, ... }:
 {
   imports = [
-    ./../Hardware/Thinkpad-T460.nix
-#     ./../Modules/Boot/efi.nix
+    ./hardware-configuration.nix
 
-    ./../Users/hacktheegg.nix
+    ./../../Users/hacktheegg.nix
 
-
-    ./../Modules
+    ./../../Modules
   ];
 
   system.stateVersion = "25.11";

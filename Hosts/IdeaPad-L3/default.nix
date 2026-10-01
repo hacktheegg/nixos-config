@@ -12,11 +12,9 @@
 # in
 {
   imports = [
-    ./../Hardware/IdeaPad-L3.nix
+    ./hardware-configuration.nix
 
-#     ./../Users/hacktheegg.nix
-
-    ./../Modules
+    ./../../Modules
   ];
 
   omelette.boot.efi.enable = true;
