@@ -1,6 +1,5 @@
 { config, lib, ... }:
 
-
 {
   options.omelette.services.mpd = {
     enable = lib.mkOption {
@@ -10,7 +9,6 @@
       description = "Whether to enable mpd.";
     };
   };
-
 
   config = lib.mkIf config.omelette.services.mpd.enable {
     services.mpd = {

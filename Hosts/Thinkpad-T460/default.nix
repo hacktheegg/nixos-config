@@ -14,24 +14,22 @@
 
   omelette.containers.media.enable = false;
 
-
   # services.desktopManager.plasma6.enable = true;
   # services.desktopManager.plasma6.enableQt5Integration = true;
 
-#   omelette.networks.bridges = {
-#     custom = {
-#       name = "br-custom";
-#       gateway = "10.100.0.1";
-# #       subnet = "10.100.0.0/24";
-#     };
-#   };
+  #   omelette.networks.bridges = {
+  #     custom = {
+  #       name = "br-custom";
+  #       gateway = "10.100.0.1";
+  # #       subnet = "10.100.0.0/24";
+  #     };
+  #   };
 
-#   omelette.containers.qbittorrent.incompletePath = "/tmp/qbit/incomplete";
-#   omelette.containers.qbittorrent.completedPath = "/tmp/qbit/complete";
-#   omelette.containers.reverse-proxy.cloudflared.enable = true;
-#   omelette.containers.reverse-proxy.enable = true;
-#   omelette.containers.reverse-proxy.bridge = config.omelette.networks.bridges.custom;
-
+  #   omelette.containers.qbittorrent.incompletePath = "/tmp/qbit/incomplete";
+  #   omelette.containers.qbittorrent.completedPath = "/tmp/qbit/complete";
+  #   omelette.containers.reverse-proxy.cloudflared.enable = true;
+  #   omelette.containers.reverse-proxy.enable = true;
+  #   omelette.containers.reverse-proxy.bridge = config.omelette.networks.bridges.custom;
 
   #######
 
@@ -54,8 +52,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
   };
-
-
 
   time.timeZone = "Australia/NSW";
   i18n.defaultLocale = "en_AU.UTF-8";
@@ -82,7 +78,6 @@
     #     wrapperFeatures.gtk = true;
   };
 
-
   virtualisation.libvirtd = {
     enable = true;
     #     qemu = {
@@ -104,7 +99,6 @@
     gnome-boxes # VM management
     dnsmasq # VM networking
     phodav # (optional) Share files with guest VMs
-
 
     cloudflared
     dig
@@ -141,10 +135,10 @@
           file = "/etc/machine-id";
           inInitrd = true;
         }
-#         "/etc/passwd"
-#         "/etc/shadow"
-#         "/etc/group"
-#         "/etc/gshadow"
+        #         "/etc/passwd"
+        #         "/etc/shadow"
+        #         "/etc/group"
+        #         "/etc/gshadow"
         {
           file = "/etc/ssh/ssh_host_ed25519_key";
           mode = "0600";
@@ -203,5 +197,5 @@
     };
   };
 
-#   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+  #   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 }

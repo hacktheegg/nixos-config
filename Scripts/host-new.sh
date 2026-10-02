@@ -151,7 +151,7 @@ awk '{
 END {
     for (i = 1; i <= NR; i++) {
         if (i == last)
-            print "'"    $VAR_HOSTNAME = ./Hosts/$VAR_HOSTNAME"'"
+            print "'"  $VAR_HOSTNAME = ./Hosts/$VAR_HOSTNAME"';"
         print lines[i]
     }
 }' "$SCRIPT_DIR""/../hosts.nix" > "$SCRIPT_DIR""/../hosts.nix.tmp"
@@ -165,7 +165,7 @@ awk '{
 END {
     for (i = 1; i <= NR; i++) {
         if (i == last)
-            print "'"    $VAR_HOSTNAME = mkSystem \"$VAR_HOSTNAME\""'"
+            print "'"  $VAR_HOSTNAME = mkSystem \"$VAR_HOSTNAME\""';"
         print lines[i]
     }
 }' "$SCRIPT_DIR""/../system.nix" > "$SCRIPT_DIR""/../system.nix.tmp"

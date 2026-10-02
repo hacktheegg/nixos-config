@@ -9,26 +9,29 @@ in
     enable = lib.mkEnableOption "Jellyfin Container";
     cacheDir = lib.mkOption {
       type = lib.types.str;
-#       default = false;
+      #       default = false;
       example = "/var/cache/jellyfin";
       description = "Directory for Jellyfin Cache.";
     };
     configDir = lib.mkOption {
       type = lib.types.str;
-#       default = false;
+      #       default = false;
       example = "${cfg.dataDir}/config";
       description = "Directory for Jellyfin Config.";
     };
     dataDir = lib.mkOption {
       type = lib.types.str;
-#       default = false;
+      #       default = false;
       example = "/var/lib/jellyfin";
       description = "Directory for Jellyfin Data.";
     };
     mounts = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-#       default = false;
-      example = [ "/mount/Movies" "/mnt/Shows" ];
+      #       default = false;
+      example = [
+        "/mount/Movies"
+        "/mnt/Shows"
+      ];
       description = "List of Custom Mounts";
     };
   };
@@ -57,14 +60,17 @@ in
           isReadOnly = false;
           mountPoint = "${mountpoint}/data";
         };
-      } // lib.listToAttrs (lib.imap0 (i: path: {
+      }
+      // lib.listToAttrs (
+        lib.imap0 (i: path: {
           name = "mount${toString i}";
           value = {
             hostPath = path;
             isReadOnly = true;
             mountPoint = path;
           };
-        }) cfg.mounts);
+        }) cfg.mounts
+      );
 
       config = { ... }: {
         system.stateVersion = "25.11";
@@ -77,6 +83,9 @@ in
         };
       };
     };
-    networking.firewall.allowedTCPPorts = [ 8080 8096 ];
+    networking.firewall.allowedTCPPorts = [
+      8080
+      8096
+    ];
   };
 }

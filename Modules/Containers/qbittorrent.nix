@@ -9,14 +9,17 @@ in
     enable = lib.mkEnableOption "Qbittorrent Container";
     profileDir = lib.mkOption {
       type = lib.types.str;
-#       default = false;
+      #       default = false;
       example = "/var/lib/qBittorrent";
       description = "Qbittorrent Profile Directory";
     };
     mounts = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-#       default = false;
-      example = [ "/mount/Movies" "/mnt/Shows" ];
+      #       default = false;
+      example = [
+        "/mount/Movies"
+        "/mnt/Shows"
+      ];
       description = "List of Custom Mounts";
     };
     webPort = lib.mkOption {
@@ -28,10 +31,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.tmpfiles.rules =
-      lib.optionals cfg.enable [
-        "d ${cfg.profileDir} 0755 root root -"
-      ];
+    systemd.tmpfiles.rules = lib.optionals cfg.enable [
+      "d ${cfg.profileDir} 0755 root root -"
+    ];
     containers.qbittorrent = {
       autoStart = true;
       bindMounts = {
@@ -40,14 +42,17 @@ in
           isReadOnly = false;
           mountPoint = "${mountpoint}/profile";
         };
-      } // lib.listToAttrs (lib.imap0 (i: path: {
+      }
+      // lib.listToAttrs (
+        lib.imap0 (i: path: {
           name = "mount${toString i}";
           value = {
             hostPath = path;
             isReadOnly = false;
             mountPoint = path;
           };
-        }) cfg.mounts);
+        }) cfg.mounts
+      );
 
       config = { ... }: {
         system.stateVersion = "25.11";
@@ -62,7 +67,7 @@ in
       };
     };
     networking.firewall.allowedTCPPorts = [
-        cfg.webPort
-      ];
+      cfg.webPort
+    ];
   };
 }

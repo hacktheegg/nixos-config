@@ -33,7 +33,7 @@
     GTK_APPLICATION_PREFER_DARK_THEME = "1";
 
     # Color scheme preference for XDG portals
-#     GTK_USE_PORTAL = "1";
+    #     GTK_USE_PORTAL = "1";
   };
 
   # dconf dark mode setting for GNOME/GTK applications

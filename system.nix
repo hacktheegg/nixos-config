@@ -1,9 +1,16 @@
-{}:
+{ }:
 
 let
 
-  inherit (import ./channels.nix) nixpkgs home-manager agenix copyparty nur preservation;
-   # nixpkgs = builtins.fetchTarball
+  inherit (import ./channels.nix)
+    nixpkgs
+    home-manager
+    agenix
+    copyparty
+    nur
+    preservation
+    ;
+  # nixpkgs = builtins.fetchTarball
 
   hostConfigs = import ./hosts.nix;
 
@@ -20,11 +27,11 @@ let
     nurpkgs = pkgs;
   };
 
-
   #
   # I hate having to do this
   #
-  mkSystem = selectedHost:
+  mkSystem =
+    selectedHost:
     import "${nixpkgs}/nixos" {
       configuration = {
         imports = [
@@ -32,7 +39,7 @@ let
           "${agenix}/modules/age.nix"
           "${copyparty}/contrib/nixos/modules/copyparty.nix"
           "${preservation}/module.nix"
-#           ./Pkgs
+          #           ./Pkgs
           ./configuration.nix
           (builtins.getAttr selectedHost hostConfigs)
         ];

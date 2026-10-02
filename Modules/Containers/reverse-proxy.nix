@@ -14,14 +14,13 @@
     };
   };
 
-
-
   config = lib.mkIf config.omelette.containers.reverse-proxy.enable {
     containers.reverse-proxy = {
       bindMounts = {
         "/etc/os-release".isReadOnly = true;
-#         "/etc/ssh/ssh_host_ed25519_key".isReadOnly = true;
-      } // lib.optionalAttrs config.omelette.containers.reverse-proxy.cloudflared.enable {
+        #         "/etc/ssh/ssh_host_ed25519_key".isReadOnly = true;
+      }
+      // lib.optionalAttrs config.omelette.containers.reverse-proxy.cloudflared.enable {
         "${config.omelette.containers.reverse-proxy.cloudflared.token}" = {
           hostPath = config.omelette.containers.reverse-proxy.cloudflared.token;
           isReadOnly = true;
@@ -31,19 +30,21 @@
       autoStart = true;
       config = { lib, pkgs, ... }: {
         system.stateVersion = "25.11";
-        systemd.services.cloudflared-tunnel = lib.mkIf config.omelette.containers.reverse-proxy.cloudflared.enable {
-          description = "Cloudflare Tunnel";
+        systemd.services.cloudflared-tunnel =
+          lib.mkIf config.omelette.containers.reverse-proxy.cloudflared.enable
+            {
+              description = "Cloudflare Tunnel";
 
-          wantedBy = [ "multi-user.target" ];
-          after = [ "network-online.target" ];
-          wants = [ "network-online.target" ];
+              wantedBy = [ "multi-user.target" ];
+              after = [ "network-online.target" ];
+              wants = [ "network-online.target" ];
 
-          serviceConfig = {
-            ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token-file ${config.omelette.containers.reverse-proxy.cloudflared.token}";
-            Restart = "on-failure";
-            RestartSec = "5s";
-          };
-        };
+              serviceConfig = {
+                ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token-file ${config.omelette.containers.reverse-proxy.cloudflared.token}";
+                Restart = "on-failure";
+                RestartSec = "5s";
+              };
+            };
 
       };
     };

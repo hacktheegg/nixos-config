@@ -2,8 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, config, ... }:
-
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
 
@@ -30,6 +34,7 @@
     neocmakelsp
     nil
     vscode-json-languageserver
+    nixfmt # find . -name '*.nix' -exec nixfmt {} +
 
     prettier
   ];
@@ -40,7 +45,6 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
 
   programs = {
     tmux = {
@@ -56,8 +60,6 @@
     };
   };
 
-
-
   age.secrets.ntfy-creds = {
     file = ./Secrets/ntfy-creds.age;
     owner = "nobody";
@@ -71,11 +73,17 @@
 
   systemd.services.update-alert = {
     description = "Periodically Alert NTFY When Device is Behind in Version.";
-    path = [ pkgs.git pkgs.coreutils pkgs.gnugrep pkgs.ntfy-sh pkgs._9base pkgs.hostname ];
+    path = [
+      pkgs.git
+      pkgs.coreutils
+      pkgs.gnugrep
+      pkgs.ntfy-sh
+      pkgs._9base
+      pkgs.hostname
+    ];
 
     enable = true;
     startAt = "daily";
-
 
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
@@ -111,8 +119,6 @@
       fi
     '';
   };
-
-
 
   nix.settings.experimental-features = [ "nix-command" ];
   nix.gc = {

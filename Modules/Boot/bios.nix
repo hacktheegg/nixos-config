@@ -9,7 +9,7 @@
     };
     device = lib.mkOption {
       type = lib.types.str;
-#       default = false;
+      #       default = false;
       example = "/dev/sda";
       description = "Device to install GRUB bootloader onto.";
     };

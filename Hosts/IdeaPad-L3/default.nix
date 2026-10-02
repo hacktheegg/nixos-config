@@ -81,8 +81,6 @@
     };
   };
 
-
-
   age.secrets.weston-desktop-tls-cert.file = ../Secrets/weston-desktop-tls-cert.age;
   age.secrets.weston-desktop-tls-key.file = ../Secrets/weston-desktop-tls-key.age;
 
@@ -91,9 +89,9 @@
 
     bindMounts = {
       "/run/agenix/weston-desktop-tls-cert" = {
-          hostPath = config.age.secrets.weston-desktop-tls-cert.path;
-          isReadOnly = true;
-        };
+        hostPath = config.age.secrets.weston-desktop-tls-cert.path;
+        isReadOnly = true;
+      };
       "/run/agenix/weston-desktop-tls-key" = {
         hostPath = config.age.secrets.weston-desktop-tls-key.path;
         isReadOnly = true;
@@ -110,8 +108,7 @@
         createHome = true;
       };
 
-      users.groups.weston = {};
-
+      users.groups.weston = { };
 
       nixpkgs.config.allowUnfree = true;
 
@@ -130,7 +127,6 @@
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
 
-
         serviceConfig = {
           Restart = "on-failure";
           RestartSec = "5s";
@@ -145,8 +141,6 @@
     };
   };
 
-
-
   services.ntfy-sh = {
     enable = true;
 
@@ -156,15 +150,12 @@
       behind-proxy = true;
     };
   };
-#   security.pam.services.sshd.rules.session.ntfy-login = {
-#     order = 1500;
-#     control = "optional";
-#     modulePath = "${pkgs.pam_exec}/lib/security/pam_exec.so";
-#     args = "${ntfyLogin}";
-#   };
-
-
-
+  #   security.pam.services.sshd.rules.session.ntfy-login = {
+  #     order = 1500;
+  #     control = "optional";
+  #     modulePath = "${pkgs.pam_exec}/lib/security/pam_exec.so";
+  #     args = "${ntfyLogin}";
+  #   };
 
   boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "ad3ea6e7";
@@ -176,10 +167,6 @@
     interval = "monthly";
   };
 
-
-
-
-
   system.stateVersion = "25.11";
 
   services.logind.settings.Login = {
@@ -189,8 +176,7 @@
     IdleAction = "ignore";
   };
 
-
-### BLANK HDMI SCREEN ###
+  ### BLANK HDMI SCREEN ###
   boot.kernelParams = [
     "video=eDP-1:d"
     "consoleblank=300"
@@ -208,35 +194,30 @@
     };
   };
 
-#   systemd.services.console-blank = {
-#     description = "Blank Linux consoles after inactivity";
-#     wantedBy = [ "multi-user.target" ];
-#
-#     serviceConfig = {
-#       Type = "oneshot";
-#       ExecStart = pkgs.writeShellScript "console-blank" ''
-#         for tty in /dev/tty[1-9]*; do
-#           ${pkgs.util-linux}/bin/setterm --blank 5 --powerdown 5 < "$tty" > "$tty" 2>/dev/null || true
-#         done
-#       '';
-#     };
-#   };
-### BLANK HDMI SCREEN ###
-
-
-
-
+  #   systemd.services.console-blank = {
+  #     description = "Blank Linux consoles after inactivity";
+  #     wantedBy = [ "multi-user.target" ];
+  #
+  #     serviceConfig = {
+  #       Type = "oneshot";
+  #       ExecStart = pkgs.writeShellScript "console-blank" ''
+  #         for tty in /dev/tty[1-9]*; do
+  #           ${pkgs.util-linux}/bin/setterm --blank 5 --powerdown 5 < "$tty" > "$tty" 2>/dev/null || true
+  #         done
+  #       '';
+  #     };
+  #   };
+  ### BLANK HDMI SCREEN ###
 
   networking.hostName = "IdeaPad-L3"; # Define your hostname.
   networking.networkmanager.enable = true;
-
 
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings.Policy.AutoEnable = true;
   };
-#   services.blueman.enable = true;
+  #   services.blueman.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -252,12 +233,10 @@
     waypipe
   ];
 
-
   time.timeZone = "Australia/NSW";
   i18n.defaultLocale = "en_AU.UTF-8";
 
   nixpkgs.config.allowUnfree = true;
-
 
   users.users = {
     hacktheegg = {
@@ -268,7 +247,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3G3MXV0lULAAMHHR5vj8rOD+9mc/jAuvbbKOQ/jTrH agenix recovery"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+cXDNU7PAa7gxV+1iZ2+agsxEE2T9FAIOHjwrIvx+9 trmwdc@gmail.com"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ObBl3+9+6RsvhLo0SvBwZISP8MZ7I4VDBKIE+Se18 marley@marley-laptop-mint"
-#         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE+WPY9B4z8mRavi7xNMPiV++SZVKHzlnBxoSuggA1UN nedaa@Computer"
+        #         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE+WPY9B4z8mRavi7xNMPiV++SZVKHzlnBxoSuggA1UN nedaa@Computer"
       ];
       initialPassword = "abc";
     };
@@ -286,27 +265,21 @@
     };
   };
 
+  #   services.openssh = {
+  #     enable = true;
+  #     hostKeys = [
+  #       {
+  #         path = "/etc/ssh/ssh_host_ed25519_key";
+  #         type = "ed25519";
+  #       }
+  #     ];
+  #   };
 
-
-#   services.openssh = {
-#     enable = true;
-#     hostKeys = [
-#       {
-#         path = "/etc/ssh/ssh_host_ed25519_key";
-#         type = "ed25519";
-#       }
-#     ];
-#   };
-
-
-
-
-#   age.secrets.copyparty-pass = {
-#     file = ./../Secrets/test-secret.age;
-#     owner = "hacktheegg";
-#     group = "users";
-#   };
-
+  #   age.secrets.copyparty-pass = {
+  #     file = ./../Secrets/test-secret.age;
+  #     owner = "hacktheegg";
+  #     group = "users";
+  #   };
 
   networking.firewall.allowedTCPPorts = [ 3923 ];
 
@@ -331,7 +304,6 @@
       #accounts.hacktheegg.passwordFile = "/etc/nixos/Resources/copypartyPass";
       accounts.hacktheegg.passwordFile = "/etc/nixos/Secrets/copyparty-pass.txt";
 
-
       volumes."/" = {
         path = "/home/hacktheegg";
         access.rwmda = [ "hacktheegg" ];
@@ -343,7 +315,5 @@
     };
   };
 
-
-
-#   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+  #   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 }

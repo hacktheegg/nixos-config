@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -24,9 +29,9 @@
   networking.networkmanager.enable = true;
 
   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-   };
+    enable = true;
+    pulse.enable = true;
+  };
 
   users.users = {
     root = {
@@ -63,8 +68,6 @@
   services.openssh = {
     enable = true;
   };
-  
 
   system.stateVersion = "25.11";
 }
-

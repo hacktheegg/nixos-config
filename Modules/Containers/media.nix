@@ -2,7 +2,7 @@
 
 let
   cfg = config.omelette.containers.media;
-#   mountpoint = "/mount";
+  #   mountpoint = "/mount";
   servarrData = "/mount/servarr";
 in
 {
@@ -10,15 +10,18 @@ in
     enable = lib.mkEnableOption "Media Container";
     mounts = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-#       default = false;
-      example = [ "/mount/Movies" "/mnt/Shows" ];
+      #       default = false;
+      example = [
+        "/mount/Movies"
+        "/mnt/Shows"
+      ];
       description = "List of Custom Mounts";
     };
     radarr = {
       enable = lib.mkEnableOption "Radarr";
       dataDir = lib.mkOption {
         type = lib.types.str;
-  #       default = false;
+        #       default = false;
         example = "/var/lib/radarr/.config/NzbDrone";
         description = "Directory for Radarr Data.";
       };
@@ -33,7 +36,7 @@ in
       enable = lib.mkEnableOption "Sonarr";
       dataDir = lib.mkOption {
         type = lib.types.str;
-  #       default = false;
+        #       default = false;
         example = "/var/lib/sonarr/.config/NzbDrone";
         description = "Directory for Sonarr Data.";
       };
@@ -48,7 +51,7 @@ in
       enable = lib.mkEnableOption "Lidarr";
       dataDir = lib.mkOption {
         type = lib.types.str;
-  #       default = false;
+        #       default = false;
         example = "/var/lib/lidarr/.config/NzbDrone";
         description = "Directory for Lidarr Data.";
       };
@@ -65,11 +68,11 @@ in
     systemd.tmpfiles.rules =
       lib.optionals cfg.radarr.enable [
         "d ${cfg.radarr.dataDir} 0755 root root -"
-      ] ++
-      lib.optionals cfg.sonarr.enable [
+      ]
+      ++ lib.optionals cfg.sonarr.enable [
         "d ${cfg.sonarr.dataDir} 0755 root root -"
-      ] ++
-      lib.optionals cfg.lidarr.enable [
+      ]
+      ++ lib.optionals cfg.lidarr.enable [
         "d ${cfg.lidarr.dataDir} 0755 root root -"
       ];
     containers.media = {
@@ -90,14 +93,17 @@ in
           isReadOnly = false;
           mountPoint = "${servarrData}/lidarr/data";
         };
-      } // lib.listToAttrs (lib.imap0 (i: path: {
+      }
+      // lib.listToAttrs (
+        lib.imap0 (i: path: {
           name = "mount${toString i}";
           value = {
             hostPath = path;
             isReadOnly = false;
             mountPoint = path;
           };
-        }) cfg.mounts);
+        }) cfg.mounts
+      );
 
       config = { ... }: {
         system.stateVersion = "25.11";
@@ -126,11 +132,11 @@ in
     networking.firewall.allowedTCPPorts =
       lib.optionals cfg.radarr.enable [
         cfg.radarr.webPort
-      ] ++
-      lib.optionals cfg.sonarr.enable [
+      ]
+      ++ lib.optionals cfg.sonarr.enable [
         cfg.sonarr.webPort
-      ] ++
-      lib.optionals cfg.lidarr.enable [
+      ]
+      ++ lib.optionals cfg.lidarr.enable [
         cfg.lidarr.webPort
       ];
   };
