@@ -1,5 +1,8 @@
 # Egg's NixOS Config
 
+The NixOS config I use for my collection of devices.
+
+
 ## Highlights
 
 - Modularised Configuration
@@ -9,7 +12,7 @@
 
 ## Overview
 
-This is my personal config used on NixOS, a declaration based Linux distro.
+This is the configuration that I have built up over my time using NixOS, it includes per-device configurations, containerised services, and a complete lack of flake usage.
 
 
 ### Authors
@@ -19,49 +22,45 @@ This is my personal config used on NixOS, a declaration based Linux distro.
 
 ## Usage
 
-Clone the repository then run this script to build the system
+Clone the repository then run this script to build the system.
 ```bash
 ./rebuild.sh
 ```
 
+You will be given an interactive selecter on what to build.
+
 
 ### Installation
 
+During a live installation at the partitioning stage, make sure there is at minimum one btrfs partition, preferably the root partition.
+
+Make sure 2 subvolumes exist, one mounted at `/mnt/etc/nixos` (preferably called @nixos), and one at `/mnt/.snapshots` (preferably called @snapshots).
+
+After all partitions and mounts are sorted out you then need to clone the configuration to the @nixos subvolume
+
 ```bash
-git clone "https://git.hacktheegg.cc/hacktheegg/nixos-config.git"
+git clone "https://git.hacktheegg.cc/hacktheegg/nixos-config.git" "/mnt/etc/nixos"
 ```
 
-Create file within `./Hardware/` and place the output of this command:
+Then run the following script to add a new host entry in the repo.
+
 ```bash
-nixos-generate-config --show-hardware-config
+/mnt/etc/nixos/Scripts/host-new.nix
 ```
 
-Create a matching file in `./Builds/` with the following contents:
-```nix
-{ ... }: {
+From here you then need to edit the created entry in `/mnt/etc/nixos/Hosts/` to however you want it. e.g.
 
-  imports =
-    [
-      ./../Hardware/{your_hardware_config}.nix
-      ./../Modules/bootloader.nix
-    ];
-    
-  imports = [
-    ./../Hardware/{your_hardware_config}.nix
-    ./../Modules
-  ];
-
-  omelette.boot.efi.enable = true;
-  
-  ## WARNING: Modifying this line may induce breaking changes, check before updating
-  system.stateVersion = "25.11";
-}
+```bash
+vim /mnt/etc/nixos/Hosts/Thinkpad-T460/default.nix
 ```
 
+When you are done configuring your entry, it will finally be time to run the install command:
 
-Add an entry in `./hosts.nix` and an `./system.nix`.
+```bash
+nixos-install --file /mnt/etc/nixos/system.nix --attr Thinkpad-T460
+```
 
-From here your entries in `./Builds/` is what controls each device, allowing for efficient, module-based configuration.
+Make sure to change Thinkpad-T460 with your configurations Hostname
 
 
 ### TODO:

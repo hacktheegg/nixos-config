@@ -13,11 +13,13 @@
       example = "/dev/sda";
       description = "Device to install GRUB bootloader onto.";
     };
+    useOSProber = lib.mkEnableOption "Use os prober";
   };
   config = lib.mkIf config.omelette.boot.bios.enable {
     boot.loader = {
       grub = {
         device = config.omelette.boot.bios.device;
+        useOSProber = config.omelette.boot.bios.useOSProber;
         enable = true;
       };
       systemd-boot.enable = false;

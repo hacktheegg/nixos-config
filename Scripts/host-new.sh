@@ -8,6 +8,7 @@ VAR_HOSTNAME=""
 NIX_HARDWARE_ROOT="/mnt"
 
 
+
 # hostnamectl
 # cat /sys/firmware/efi/fw_platform_size
 
@@ -18,7 +19,7 @@ show_help() {
     echo ""
     echo "Options:"
     echo "  --hostname [VALUE]      Sets the name to be used when identifying this device."
-    echo "  --hardware-root [VALUE] Sets the name to be used when identifying this device. (default: \"/mnt\")"
+    echo "  --hardware-root [VALUE] Sets the base path that the generated hardware configuration will be based from. (default: \"/mnt\")"
     echo "  -h, --help              Show this help message."
     exit 0
 }
@@ -92,7 +93,7 @@ if [ ! -f "$SCRIPT_DIR""/../hosts.nix" ]; then
     exit 1
 fi
 
-if [ - "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME" ]; then
+if [ -e "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME" ]; then
     echo "Host Already Exists" 1>&2
     exit 1
 fi
@@ -101,12 +102,10 @@ fi
 
 mkdir "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME"
 # echo "Creating File ""$SCRIPT_DIR""/configuration.nix"
-touch "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME""/hardware-configuration.nix"
 nixos-generate-config --show-hardware-config --root "$NIX_HARDWARE_ROOT" > "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME""/hardware-configuration.nix"
 
 
 
-touch "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME""/default.nix"
 cat > "$SCRIPT_DIR""/../Hosts/""$VAR_HOSTNAME""/default.nix" << EOF
 { config, lib, pkgs, ... }:
 

@@ -7,6 +7,7 @@
       example = true;
       description = "Enable EFI boot method.";
     };
+    useOSProber = lib.mkEnableOption "Use os prober";
   };
   config = lib.mkIf config.omelette.boot.efi.enable {
     boot.loader = {
@@ -14,6 +15,7 @@
       grub = {
         device = "nodev";
         efiSupport = true;
+        useOSProber = config.omelette.boot.efi.useOSProber;
         enable = true;
       };
       systemd-boot.enable = false;
