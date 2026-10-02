@@ -158,17 +158,19 @@ END {
 
 
 
-awk '{
+awk -v hostname="$VAR_HOSTNAME" '
+{
     lines[NR] = $0
     if ($0 ~ /}/) last = NR
 }
 END {
     for (i = 1; i <= NR; i++) {
         if (i == last)
-            print "'"  $VAR_HOSTNAME = mkSystem \"$VAR_HOSTNAME\""';"
+            print hostname " = mkSystem \"" hostname "\";"
         print lines[i]
     }
-}' "$SCRIPT_DIR""/../system.nix" > "$SCRIPT_DIR""/../system.nix.tmp"
+}
+' "$SCRIPT_DIR""/../system.nix" > "$SCRIPT_DIR""/../system.nix.tmp"
 
 
 
