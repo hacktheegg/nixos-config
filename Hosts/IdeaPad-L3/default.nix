@@ -19,7 +19,7 @@
 
   omelette.boot.efi.enable = true;
 
-    omelette.services.update-alert = {
+  omelette.services.update-alert = {
     enable = true;
     url = config.age.secrets.ntfy-url.path;
     credentials = config.age.secrets.ntfy-creds.path;
