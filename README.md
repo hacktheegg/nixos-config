@@ -65,6 +65,7 @@ Make sure to change Thinkpad-T460 with your configurations Hostname
 
 ### TODO:
 
+- [ ] Add secrets to Scripts/host-new.sh (PRIORITY: HIGH)
 - [ ] Port Homeserver from Arch/Docker to NixOS (PRIORITY: HIGH)
 - [ ] Script to quick-setup a dev environment `./Scripts/init.sh` (PRIORITY: MEDIUM)
 - [ ] Setup homeserver with attic (cache.nixos.org alternative) so devices build from non-central server

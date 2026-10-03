@@ -166,7 +166,7 @@ awk -v hostname="$VAR_HOSTNAME" '
 END {
     for (i = 1; i <= NR; i++) {
         if (i == last)
-            print hostname " = mkSystem \"" hostname "\";"
+            print "  " hostname " = mkSystem \"" hostname "\";"
         print lines[i]
     }
 }

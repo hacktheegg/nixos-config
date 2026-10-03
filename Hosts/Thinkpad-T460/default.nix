@@ -12,6 +12,25 @@
 
   omelette.boot.efi.enable = true;
 
+  omelette.services.update-alert = {
+    enable = true;
+    url = config.age.secrets.ntfy-url.path;
+    credentials = config.age.secrets.ntfy-creds.path;
+  };
+
+  age.secrets.ntfy-creds = {
+    file = ./Secrets/ntfy-creds.age;
+    owner = "nobody";
+    mode = "0400";
+  };
+  age.secrets.ntfy-url = {
+    file = ./Secrets/ntfy-url.age;
+    owner = "nobody";
+    mode = "0400";
+  };
+
+
+
   omelette.containers.media.enable = false;
 
   # services.desktopManager.plasma6.enable = true;

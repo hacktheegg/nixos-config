@@ -19,13 +19,30 @@
 
   omelette.boot.efi.enable = true;
 
+    omelette.services.update-alert = {
+    enable = true;
+    url = config.age.secrets.ntfy-url.path;
+    credentials = config.age.secrets.ntfy-creds.path;
+  };
+
+  age.secrets.ntfy-creds = {
+    file = ./Secrets/ntfy-creds.age;
+    owner = "nobody";
+    mode = "0400";
+  };
+  age.secrets.ntfy-url = {
+    file = ./Secrets/ntfy-url.age;
+    owner = "nobody";
+    mode = "0400";
+  };
+
   /*
     * 10% Music
     * 45% Movies
     * 45% Shows
   */
 
-  age.secrets.tunnel-token-practice-server.file = ../Secrets/Tunnel-Token-Practice-Server.age;
+  age.secrets.tunnel-token.file = ../Secrets/Tunnel-Token.age;
 
   omelette = {
     containers = {
@@ -66,7 +83,7 @@
         enable = true;
         cloudflared = {
           enable = true;
-          token = config.age.secrets.tunnel-token-practice-server.path;
+          token = config.age.secrets.tunnel-token.path;
         };
       };
       qbittorrent = {
@@ -81,65 +98,6 @@
     };
   };
 
-  age.secrets.weston-desktop-tls-cert.file = ../Secrets/weston-desktop-tls-cert.age;
-  age.secrets.weston-desktop-tls-key.file = ../Secrets/weston-desktop-tls-key.age;
-
-  containers.weston-desktop = {
-    autoStart = false;
-
-    bindMounts = {
-      "/run/agenix/weston-desktop-tls-cert" = {
-        hostPath = config.age.secrets.weston-desktop-tls-cert.path;
-        isReadOnly = true;
-      };
-      "/run/agenix/weston-desktop-tls-key" = {
-        hostPath = config.age.secrets.weston-desktop-tls-key.path;
-        isReadOnly = true;
-      };
-    };
-
-    config = { config, pkgs, ... }: {
-      system.stateVersion = "25.11";
-
-      users.users.weston = {
-        isNormalUser = true;
-        group = "weston";
-        home = "/var/lib/weston";
-        createHome = true;
-      };
-
-      users.groups.weston = { };
-
-      nixpkgs.config.allowUnfree = true;
-
-      environment.systemPackages = with pkgs; [
-        weston
-        alacritty
-        foot
-      ];
-
-      systemd.services.weston-rdp = {
-        description = "Run Weston in RDP mode.";
-
-        enable = true;
-
-        wantedBy = [ "multi-user.target" ];
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-
-        serviceConfig = {
-          Restart = "on-failure";
-          RestartSec = "5s";
-          User = "weston";
-          Group = "weston";
-          RuntimeDirectory = "weston";
-          RuntimeDirectoryMode = "0700";
-          Environment = "XDG_RUNTIME_DIR=/run/weston";
-          ExecStart = "${pkgs.weston}/bin/weston --backend=rdp --rdp-tls-cert=/run/agenix/weston-desktop-tls-cert --rdp-tls-key=/run/agenix/weston-desktop-tls-key";
-        };
-      };
-    };
-  };
 
   services.ntfy-sh = {
     enable = true;
