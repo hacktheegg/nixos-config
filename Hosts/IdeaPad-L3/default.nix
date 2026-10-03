@@ -42,7 +42,7 @@
     * 45% Shows
   */
 
-  age.secrets.tunnel-token.file = ../Secrets/Tunnel-Token.age;
+  age.secrets.tunnel-token.file = ./Secrets/Tunnel-Token.age;
 
   omelette = {
     containers = {
