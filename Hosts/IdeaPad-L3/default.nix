@@ -26,12 +26,12 @@
   };
 
   age.secrets.ntfy-creds = {
-    file = ./Secrets/ntfy-creds.age;
+    file = ./../Thinkpad-T460/Secrets/ntfy-creds.age;
     owner = "nobody";
     mode = "0400";
   };
   age.secrets.ntfy-url = {
-    file = ./Secrets/ntfy-url.age;
+    file = ./../Thinkpad-T460/Secrets/ntfy-url.age;
     owner = "nobody";
     mode = "0400";
   };
@@ -152,19 +152,6 @@
     };
   };
 
-  #   systemd.services.console-blank = {
-  #     description = "Blank Linux consoles after inactivity";
-  #     wantedBy = [ "multi-user.target" ];
-  #
-  #     serviceConfig = {
-  #       Type = "oneshot";
-  #       ExecStart = pkgs.writeShellScript "console-blank" ''
-  #         for tty in /dev/tty[1-9]*; do
-  #           ${pkgs.util-linux}/bin/setterm --blank 5 --powerdown 5 < "$tty" > "$tty" 2>/dev/null || true
-  #         done
-  #       '';
-  #     };
-  #   };
   ### BLANK HDMI SCREEN ###
 
   networking.hostName = "IdeaPad-L3"; # Define your hostname.
