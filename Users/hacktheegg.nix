@@ -38,20 +38,6 @@
             };
           };
         };
-        programs.equibop = {
-          enable = true;
-          settings = {
-            # $XDG_CONFIG_HOME/equibop/settings.json
-            "discordBranch" = "stable";
-            "minimizeToTray" = false;
-            "arRPC" = false;
-          };
-          equicord.settings = {
-            # $XDG_CONFIG_HOME/equibop/settings/settings.json
-            "autoUpdate" = false;
-            "autoUpdateNotification" = true;
-          };
-        };
         imports = [
           ./dark-mode-GTK.nix
           ./dark-mode-QT.nix
