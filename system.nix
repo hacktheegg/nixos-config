@@ -40,13 +40,21 @@ let
           "${agenix}/modules/age.nix"
           "${copyparty}/contrib/nixos/modules/copyparty.nix"
           "${preservation}/module.nix"
-          "${comin}/nix/module.nix"
+          (import "${comin}/nix/module.nix" {
+            self = {
+              packages = {};
+            };
+          })
           #           ./Pkgs
           ./configuration.nix
           (builtins.getAttr selectedHost hostConfigs)
         ];
 
         nixpkgs.overlays = [
+#           (final: prev: {
+#             comin = prev.callPackage "${comin}/nix/package.nix" {};
+#           })
+
           (import "${copyparty}/contrib/package/nix/overlay.nix")
         ];
 
