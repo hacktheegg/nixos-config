@@ -51,9 +51,9 @@ let
         ];
 
         nixpkgs.overlays = [
-#           (final: prev: {
-#             comin = prev.callPackage "${comin}/nix/package.nix" {};
-#           })
+          (final: prev: {
+            comin = prev.callPackage "${comin}/nix/package.nix" {};
+          })
 
           (import "${copyparty}/contrib/package/nix/overlay.nix")
         ];
