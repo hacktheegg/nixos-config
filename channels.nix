@@ -30,6 +30,6 @@
   };
   comin = builtins.fetchTarball {
     url = "https://github.com/nlewo/comin/archive/bbef55c14742d4d45ebe2b40ce4d9a220d799563.tar.gz"; # branch:main
-    sha256 = "";
+    sha256 = "sha256:0w779cw8gxkzni6249lyn7izp9wnvc2dqlv95xdm7f6c4p418d13";
   };
 }
