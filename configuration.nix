@@ -19,6 +19,7 @@
     vim
     nmap
     git
+    gnupg
 
     # Script Dependencies
     fzf

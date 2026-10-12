@@ -28,5 +28,8 @@
     url = "https://github.com/nix-community/preservation/archive/93416f4614ad2dfed5b0dcf12f27e57d27a5ab11.tar.gz"; # branch:main
     sha256 = "sha256:0im42hnghfcp0bzlkngkdd7a93fh2dm0y82sllz7ryflm4hkvhlq";
   };
-
+  comin = builtins.fetchTarball {
+    url = "https://github.com/nlewo/comin/archive/bbef55c14742d4d45ebe2b40ce4d9a220d799563.tar.gz"; # branch:main
+    sha256 = "sha256:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+  };
 }

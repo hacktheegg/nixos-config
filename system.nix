@@ -9,6 +9,7 @@ let
     copyparty
     nur
     preservation
+    comin
     ;
   # nixpkgs = builtins.fetchTarball
 
@@ -39,6 +40,7 @@ let
           "${agenix}/modules/age.nix"
           "${copyparty}/contrib/nixos/modules/copyparty.nix"
           "${preservation}/module.nix"
+          "${comin}/nix/module.nix"
           #           ./Pkgs
           ./configuration.nix
           (builtins.getAttr selectedHost hostConfigs)

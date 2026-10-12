@@ -120,6 +120,9 @@
     security.polkit.enable = true;
     services = {
       blueman.enable = true;
+      comin = {
+        enable = true;
+      };
       displayManager.sddm.enable = true;
       fstrim.enable = true;
       gvfs.enable = true;
