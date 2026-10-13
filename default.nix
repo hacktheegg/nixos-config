@@ -1,1 +1,1 @@
-import ./system.nix
+(import ./system.nix) {}
