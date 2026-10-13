@@ -126,15 +126,15 @@
 
 
 
-  services.ntfy-sh = {
-    enable = true;
-
-    settings = {
-      base-url = "https://ntfy.hacktheegg.cc";
-      listen-http = ":80";
-      behind-proxy = true;
-    };
-  };
+#   services.ntfy-sh = {
+#     enable = true;
+#
+#     settings = {
+#       base-url = "https://ntfy.hacktheegg.cc";
+#       listen-http = ":80";
+#       behind-proxy = true;
+#     };
+#   };
   #   security.pam.services.sshd.rules.session.ntfy-login = {
   #     order = 1500;
   #     control = "optional";
