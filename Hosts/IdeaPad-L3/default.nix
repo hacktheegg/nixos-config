@@ -116,6 +116,7 @@
             name = "main";
             operation = "switch";
           };
+          testing.name = "";
         };
       }
     ];
