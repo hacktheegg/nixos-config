@@ -121,7 +121,7 @@
       }
     ];
     repositoryType = "nix";
-    systemAttr = "IdeaPad-L3";
+    systemAttr = "IdeaPad-L3.config.system.build";
   };
 
 
