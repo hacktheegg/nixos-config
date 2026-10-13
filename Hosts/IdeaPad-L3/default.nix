@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 # let
 #   ntfyLogin = pkgs.writeShellScript "ntfy-ssh-login" ''
@@ -97,6 +97,24 @@
       };
     };
   };
+
+
+  services.comin = {
+    enable = true;
+    sshAllowedSignersPath = lib.writeTextFile {
+      name = "allowed-signers";
+      text = ''
+        hacktheegg@hacktheegg.cc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3G3MXV0lULAAMHHR5vj8rOD+9mc/jAuvbbKOQ/jTrH agenix recovery
+      '';
+    };
+    remotes = [
+      {
+        name = "origin";
+        url = "https://git.hacktheegg.cc/hacktheegg/nixos-config.git";
+      }
+    ];
+  };
+
 
 
   services.ntfy-sh = {

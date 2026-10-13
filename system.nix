@@ -50,6 +50,7 @@ let
           (builtins.getAttr selectedHost hostConfigs)
         ];
 
+        # makes the program's package accessible within configuration
         nixpkgs.overlays = [
           (final: prev: {
             comin = prev.callPackage "${comin}/nix/package.nix" {};
