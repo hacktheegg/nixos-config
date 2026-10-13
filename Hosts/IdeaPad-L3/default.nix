@@ -111,6 +111,12 @@
       {
         name = "origin";
         url = "https://git.hacktheegg.cc/hacktheegg/nixos-config.git";
+        branches = {
+          main = {
+            name = "main";
+            operation = "switch";
+          };
+        };
       }
     ];
     repositoryType = "nix";
