@@ -113,6 +113,8 @@
         url = "https://git.hacktheegg.cc/hacktheegg/nixos-config.git";
       }
     ];
+    repositoryType = "nix";
+    systemAttr = "IdeaPad-L3";
   };
 
 
