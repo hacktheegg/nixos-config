@@ -37,9 +37,11 @@
     enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    librewolf
-  ];
+#   environment.systemPackages = with pkgs; [
+#     librewolf
+#   ];
+
+  programs.steam.enable = true;
 
   services = {
     displayManager.plasma-login-manager.enable = true;
