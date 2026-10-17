@@ -59,9 +59,9 @@ let
           (import "${copyparty}/contrib/package/nix/overlay.nix")
         ];
 
-        home-manager.extraSpecialArgs = {
-          nur = nurPkgs;
-        };
+        # home-manager.extraSpecialArgs = {
+        #   nur = nurPkgs;
+        # };
 
         nix.nixPath = [
           "nixpkgs=${nixpkgs}"
@@ -80,4 +80,5 @@ in
   IdeaPad-L3 = mkSystem "IdeaPad-L3";
   Pavilion-dv7-Notebook = mkSystem "Pavilion-dv7-Notebook";
   HP-Compaq = mkSystem "HP-Compaq";
+  Inspiron-2n1 = mkSystem "Inspiron-2n1";
 }
