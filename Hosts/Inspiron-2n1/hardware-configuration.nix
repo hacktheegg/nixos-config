@@ -43,6 +43,12 @@
       options = [ "subvol=@snapshots" "compress=zstd" "noatime" ];
     };
 
+  fileSystems."/games" =
+    { device = "/dev/disk/by-uuid/940b3ef3-0fb4-4cf0-84a7-e2af8babadb5";
+      fsType = "btrfs";
+      options = [ "subvol=@games" "compress=zstd" "noatime" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/e3b258e8-588e-49d9-87f0-722075dadff0"; }
     ];
