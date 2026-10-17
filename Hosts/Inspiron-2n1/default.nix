@@ -17,6 +17,11 @@
   networking.hostName = "Inspiron-2n1";
 
   networking.networkmanager.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+#     settings.Policy.AutoEnable = true;
+  };
 
   users.users = {
     hacktheegg = {
