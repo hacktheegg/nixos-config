@@ -4,29 +4,14 @@ let
 
   inherit (import ./channels.nix)
     nixpkgs
-    home-manager
     agenix
     copyparty
-    nur
     preservation
     comin
     ;
   # nixpkgs = builtins.fetchTarball
 
   hostConfigs = import ./hosts.nix;
-
-  pkgs = import nixpkgs {
-    config.allowUnfree = true;
-
-    overlays = [
-      (import "${copyparty}/contrib/package/nix/overlay.nix")
-    ];
-  };
-
-  nurPkgs = import nur {
-    inherit pkgs;
-    nurpkgs = pkgs;
-  };
 
   #
   # I hate having to do this
@@ -36,7 +21,6 @@ let
     import "${nixpkgs}/nixos" {
       configuration = {
         imports = [
-          "${home-manager}/nixos"
           "${agenix}/modules/age.nix"
           "${copyparty}/contrib/nixos/modules/copyparty.nix"
           "${preservation}/module.nix"
@@ -58,10 +42,6 @@ let
 
           (import "${copyparty}/contrib/package/nix/overlay.nix")
         ];
-
-        home-manager.extraSpecialArgs = {
-          nur = nurPkgs;
-        };
 
         nix.nixPath = [
           "nixpkgs=${nixpkgs}"
