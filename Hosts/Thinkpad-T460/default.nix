@@ -71,48 +71,60 @@
             mode = "0644";
           }
         ];
-        users.hacktheegg = {
-          directories = [
-            "./.cache/Proton"
-            "./.cache/keepassxc"
-            "./.cache/protonmail"
-            "./.cache/thunderbird"
-            "./.config/equibop"
-            "./.config/gnome-boxes"
-            "./.config/gnome-games"
-            "./.config/home-manager"
-            "./.config/jellyfin-mpv-shim"
-            "./.config/kate"
-            "./.config/keepassxc"
-            "./.config/libvirt"
-            "./.config/protonmail"
-            "./.librewolf"
-            "./.local/share/dolphin"
-            "./.local/share/gnome-boxes"
-            "./.local/share/home-manager"
-            "./.local/share/kate"
-            "./.local/share/kwrite"
-            "./.local/share/protonmail"
-            "./.local/state/home-manager"
-            "./.local/state/nix/profiles"
-            "./.nix-package-search"
-            "./.thunderbird"
-            "./Persist"
-            "./home-config"
-          ];
-          files = [
-            "./.config/dolphinrc"
-            "./.config/katerc"
-            "./.config/katevirc"
-            "./.config/kwriterc"
-            "./.local/state/dolphinstaterc"
-            "./.local/state/kwritestaterc"
-            "./.nix-profile"
-            "./home.nix"
-          ];
-        };
+        # users.hacktheegg = {
+        #   directories = [
+        #     "./.cache/Proton"
+        #     "./.cache/keepassxc"
+        #     "./.cache/protonmail"
+        #     "./.cache/thunderbird"
+        #     "./.config/equibop"
+        #     "./.config/gnome-boxes"
+        #     "./.config/gnome-games"
+        #     "./.config/jellyfin-mpv-shim"
+        #     "./.config/kate"
+        #     "./.config/keepassxc"
+        #     "./.config/libvirt"
+        #     "./.config/protonmail"
+        #     "./.librewolf"
+        #     "./.local/share/dolphin"
+        #     "./.local/share/gnome-boxes"
+        #     "./.local/share/home-manager"
+        #     "./.local/share/kate"
+        #     "./.local/share/kwrite"
+        #     "./.local/share/protonmail"
+        #     "./.local/state/home-manager"
+        #     "./.local/state/nix"
+        #     "./.nix-defexpr"
+        #     "./.nix-package-search"
+        #     "./.config/home-manager"
+        #     "./.cache/nix"
+        #     "./.thunderbird"
+        #     "./Persist"
+        #     "./home-config"
+        #   ];
+        #   files = [
+        #     "./.config/dolphinrc"
+        #     "./.config/katerc"
+        #     "./.config/katevirc"
+        #     "./.config/kwriterc"
+        #     "./.local/state/dolphinstaterc"
+        #     "./.local/state/kwritestaterc"
+        #     # "./.local/state/.keep"
+        #     # "./.nix-profile"
+        #     "./.nix-channels"
+        #     "./home.nix"
+        #   ];
+        # };
       };
     };
+
+    # system.activationScripts = {
+    #   profile-init.text = 
+    #     ''
+    #       ln -sfn /home/hacktheegg/.local/state/nix/profiles/profile /home/hacktheegg/.nix-profile
+    #     '';
+    # };
+
     programs = {
       dconf.enable = true;
       localsend = {
