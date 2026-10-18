@@ -142,14 +142,20 @@
   #     args = "${ntfyLogin}";
   #   };
 
-  boot.supportedFilesystems = [ "zfs" ];
+  boot = {
+    supportedFilesystems = [ "zfs" ];
+    zfs = {
+      forceImportRoot = false;
+      extraPools = [ "zmedia" ];
+    };
+  };
   networking.hostId = "ad3ea6e7";
-  boot.zfs.forceImportRoot = false;
-  boot.zfs.extraPools = [ "zmedia" ];
-  services.zfs.trim.enable = false;
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
+  services.zfs = {
+    trim.enable = false;
+    autoScrub = {
+      enable = true;
+      interval = "monthly";
+    };
   };
 
   system.stateVersion = "25.11";
