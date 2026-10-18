@@ -64,6 +64,16 @@
     ];
   };
 
+  fileSystems."/home/hacktheegg" = {
+    device = "/dev/disk/by-uuid/fffa9c6c-f56e-48fd-a832-c895423868a9";
+    fsType = "btrfs";
+    options = [
+      "subvol=@home/hacktheegg"
+      "compress=zstd"
+      "noatime"
+    ];
+  };
+
   fileSystems."/.snapshots" = {
     device = "/dev/disk/by-uuid/fffa9c6c-f56e-48fd-a832-c895423868a9";
     fsType = "btrfs";
