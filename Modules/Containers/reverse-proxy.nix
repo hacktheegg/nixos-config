@@ -46,6 +46,8 @@
               };
             };
 
+        services.resolved.enable = true;
+        networking.useHostResolvConf = false;
       };
     };
   };
