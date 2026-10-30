@@ -53,6 +53,8 @@ in
             dataDir = "${mountpoint}/data";
             listenAddress = cfg.port;
             htpasswd-file = cfg.htpasswd;
+            appendOnly = true;
+            privateRepos = true;
           };
         };
       };
