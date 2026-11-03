@@ -4,4 +4,5 @@ let
 in
 {
   "./Secrets/Tunnel-Token.age".publicKeys = [ host eggs-recovery-key ];
+  "./Secrets/restic-htpass.age".publicKeys = [ host eggs-recovery-key ];
 }

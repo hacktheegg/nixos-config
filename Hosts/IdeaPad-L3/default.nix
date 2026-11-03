@@ -25,16 +25,16 @@
     credentials = config.age.secrets.ntfy-creds.path;
   };
 
-  age.secrets.ntfy-creds = {
-    file = ./../Thinkpad-T460/Secrets/ntfy-creds.age;
-    owner = "nobody";
-    mode = "0400";
-  };
-  age.secrets.ntfy-url = {
-    file = ./../Thinkpad-T460/Secrets/ntfy-url.age;
-    owner = "nobody";
-    mode = "0400";
-  };
+#   age.secrets.ntfy-creds = {
+#     file = ./../Thinkpad-T460/Secrets/ntfy-creds.age;
+#     owner = "nobody";
+#     mode = "0400";
+#   };
+#   age.secrets.ntfy-url = {
+#     file = ./../Thinkpad-T460/Secrets/ntfy-url.age;
+#     owner = "nobody";
+#     mode = "0400";
+#   };
 
   /*
     * 10% Music
@@ -42,7 +42,20 @@
     * 45% Shows
   */
 
-  age.secrets.tunnel-token.file = ./Secrets/Tunnel-Token.age;
+  age.secrets = {
+    ntfy-creds = {
+      file = ./../Thinkpad-T460/Secrets/ntfy-creds.age;
+      owner = "nobody";
+      mode = "0400";
+    };
+    ntfy-url = {
+      file = ./../Thinkpad-T460/Secrets/ntfy-url.age;
+      owner = "nobody";
+      mode = "0400";
+    };
+    tunnel-token.file = ./Secrets/Tunnel-Token.age;
+    restic-htpass.file = ./Secrets/restic-htpass.age;
+  };
 
   omelette = {
     containers = {
@@ -94,6 +107,12 @@
           "/cache/qbittorrent/incomplete"
         ];
         webPort = 1284;
+      };
+      restic-server = {
+        enable = true;
+        dataDir = "/media/backups/restic/backups";
+        port = 3967;
+        htpasswd = config.age.secrets.restic-htpass.path;
       };
     };
   };
