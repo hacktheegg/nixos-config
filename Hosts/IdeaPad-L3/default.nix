@@ -54,7 +54,11 @@
       mode = "0400";
     };
     tunnel-token.file = ./Secrets/Tunnel-Token.age;
-    restic-htpass.file = ./Secrets/restic-htpass.age;
+    restic-htpass.file = {
+      file = ./Secrets/restic-htpass.age;
+      owner = "nobody";
+      mode = "0444";
+    };
   };
 
   omelette = {
