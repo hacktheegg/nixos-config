@@ -17,7 +17,7 @@ in
       type = lib.types.addCheck lib.types.int (x: x >= 0 && x <= 65535);
       default = 8080;
       example = 1284;
-      description = "Web port for Qbittorrent.";
+      description = "Web port for Restic Server.";
     };
     htpasswd = lib.mkOption {
       type = lib.types.str;
@@ -51,7 +51,7 @@ in
           restic.server = {
             enable = true;
             dataDir = "${mountpoint}/data";
-            listenAddress = "${cfg.port}"; # apparently requires being a string, even when only an int
+            listenAddress = "${toString cfg.port}"; # apparently requires being a string, even when only an int
             htpasswd-file = cfg.htpasswd;
             appendOnly = true;
             privateRepos = false;
