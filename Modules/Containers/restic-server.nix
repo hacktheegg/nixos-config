@@ -51,7 +51,7 @@ in
           restic.server = {
             enable = true;
             dataDir = "${mountpoint}/data";
-            listenAddress = cfg.port;
+            listenAddress = "${cfg.port}"; # apparently requires being a string, even when only an int
             htpasswd-file = cfg.htpasswd;
             appendOnly = true;
             privateRepos = false;
