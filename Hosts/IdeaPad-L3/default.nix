@@ -54,7 +54,7 @@
       mode = "0400";
     };
     tunnel-token.file = ./Secrets/Tunnel-Token.age;
-    restic-htpass.file = {
+    restic-htpass = {
       file = ./Secrets/restic-htpass.age;
       owner = "nobody";
       mode = "0444";
