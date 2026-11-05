@@ -125,9 +125,14 @@
         dataDir = "/cache/mpd";
         musicDir = "/media/static/jellyfin/Music";
         port = 2859;
+        streamPort = 6942;
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    2859
+  ];
 
 
   services.comin = {
@@ -289,7 +294,7 @@
   #     group = "users";
   #   };
 
-  networking.firewall.allowedTCPPorts = [ 3923 ];
+#   networking.firewall.allowedTCPPorts = [ 3923 ];
 
   services = {
     copyparty = {

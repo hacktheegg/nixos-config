@@ -25,6 +25,12 @@ in
       example = 1284;
       description = "Connection port for MPD.";
     };
+    streamPort = lib.mkOption {
+      type = lib.types.addCheck lib.types.int (x: x >= 0 && x <= 65535);
+      default = 6942;
+      example = 1284;
+      description = "Streaming port for HTTP stream.";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -34,6 +40,15 @@ in
     services.mpd = {
       enable = true;
       settings = {
+        audio_output = [ {
+          type = "httpd";
+          name = "MPD FLAC Stream";
+          encoder = "flac";
+          port = "${ toString cfg.streamPort }";
+          format = "96000:24:2";
+          always_on = "yes";
+          tags = "yes";
+        } ];
         bind_to_address = "any";
         music_directory = cfg.musicDir;
         port = cfg.port;
