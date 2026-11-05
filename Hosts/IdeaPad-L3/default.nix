@@ -132,6 +132,7 @@
 
   networking.firewall.allowedTCPPorts = [
     2859
+    6942
   ];
 
 
