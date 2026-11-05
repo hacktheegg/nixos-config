@@ -119,6 +119,14 @@
         htpasswd = config.age.secrets.restic-htpass.path;
       };
     };
+    services = {
+      mpd = {
+        enable = true;
+        dataDir = "/cache/mpd";
+        musicDir = "/media/static/jellyfin/Music";
+        port = 2859;
+      };
+    };
   };
 
 
