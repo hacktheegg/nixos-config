@@ -5,23 +5,23 @@
   # latest commit of the stable channel and `nix-prefetch-url --unpack`
   # to compute its sha256 hash.
   nixpkgs = builtins.fetchTarball {
-    url = "https://releases.nixos.org/nixos/26.05/nixos-26.05.10057.cf9d2fb3e50f/nixexprs.tar.xz";
-    sha256 = "sha256:1kiwzvfgzxby7c63rfprh27c4mcgg3k0ccw9dvhvm2phcbp5a1vs";
+    url = "https://releases.nixos.org/nixos/26.05/nixos-26.05.14630.f68407657ad2/nixexprs.tar.xz";
+    sha256 = "sha256:12iy4df7fkbsm9zbji29d7xhi4jpdqcsqhw11c0vbm7hcbi2kg3f";
   };
   agenix = builtins.fetchTarball {
-    url = "https://github.com/ryantm/agenix/archive/b027ee29d959fda4b60b57566d64c98a202e0feb.tar.gz"; # branch:main
-    sha256 = "sha256:1wlpvpj45qfixdzhmk2cgiwlkyaf8a5mjy2jp5lsx2wsxblclngm";
+    url = "https://github.com/ryantm/agenix/archive/5e5b88a0c8e56f291a108c2fe9934054d9745b2e.tar.gz"; # branch:main
+    sha256 = "sha256:1d8byckf59azwlhnnw309b4jwdsrk85nhiix6ja7j3x30r4s7lpj";
   };
   copyparty = builtins.fetchTarball {
-    url = "https://github.com/9001/copyparty/archive/aff083fb286ebeb7c9f73c157d631007536701cf.tar.gz"; # branch:hovudstraum
-    sha256 = "sha256:1kxr0wnlv33pq6s06w0aiwarx7s4p7ncnnp89z80k517sairy7n1";
+    url = "https://github.com/9001/copyparty/archive/deb0380511737ad10b89c9ea929215d9330cf18f.tar.gz"; # branch:hovudstraum
+    sha256 = "sha256:090ziqvja0vrw101rhdfhzbq0yy0rinj21q26yzw1hcmrhnxm1ml";
   };
   preservation = builtins.fetchTarball {
-    url = "https://github.com/nix-community/preservation/archive/93416f4614ad2dfed5b0dcf12f27e57d27a5ab11.tar.gz"; # branch:main
-    sha256 = "sha256:0im42hnghfcp0bzlkngkdd7a93fh2dm0y82sllz7ryflm4hkvhlq";
+    url = "https://github.com/nix-community/preservation/archive/00be7f7dd1a11ae0605386f2272288de7cf33abe.tar.gz"; # branch:main
+    sha256 = "sha256:07xzjh9ifwb32x36b9px95kgg3wwmkks58lwcgydfddn4fnkdw5k";
   };
   comin = builtins.fetchTarball {
-    url = "https://github.com/nlewo/comin/archive/bbef55c14742d4d45ebe2b40ce4d9a220d799563.tar.gz"; # branch:main
-    sha256 = "sha256:0w779cw8gxkzni6249lyn7izp9wnvc2dqlv95xdm7f6c4p418d13";
+    url = "https://github.com/nlewo/comin/archive/c84768279d6c8cd0cb26c2a367890f5e63776b9e.tar.gz"; # branch:main
+    sha256 = "sha256:1ay36clqqp0j40rcmg70s2m9jj5i33krk6gzwihji1rp46ch8qzx";
   };
 }
