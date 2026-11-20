@@ -35,6 +35,7 @@
     neocmakelsp
     nil
     vscode-json-languageserver
+    rust-analyzer
     nixfmt # find . -name '*.nix' -exec nixfmt {} +
 
     prettier

@@ -61,6 +61,7 @@
       name = "allowed-signers";
       text = ''
         hacktheegg@hacktheegg.cc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3G3MXV0lULAAMHHR5vj8rOD+9mc/jAuvbbKOQ/jTrH agenix recovery
+        hacktheegg@hacktheegg.cc ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMIxXWWsubBXn6dBMEImmiiIjuBc3Pfa5U68IFxm0ioa hacktheegg-PRIMARY
       '';
     }}";
     remotes = [
